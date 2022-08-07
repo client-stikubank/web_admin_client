@@ -1,301 +1,173 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from 'react'
+import MetaTags from 'react-meta-tags'
+import { Row, Col, CardBody, Card, Alert, Container } from 'reactstrap'
+import { useSelector, useDispatch } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { withTranslation } from 'react-i18next'
+import { AvForm, AvField } from 'availity-reactstrap-validation'
+import PropTypes from 'prop-types'
+import toast from '../../helpers/toast'
+import * as message from '../../constants/message'
 
-import { Row, Col, CardBody, Card, Alert, Container, Form, Input, FormFeedback, Label } from "reactstrap";
+// Redux actions
+import { loginUser } from '../../store/actions'
 
-//redux
-import { useSelector, useDispatch } from "react-redux";
-
-import { withRouter, Link } from "react-router-dom";
-
-// Formik validation
-import * as Yup from "yup";
-import { useFormik } from "formik";
-
-//Social Media Imports
-import { GoogleLogin } from "react-google-login";
-// import TwitterLogin from "react-twitter-auth"
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-
-// actions
-import { loginUser, socialLogin } from "../../store/actions";
-
-// import images
-import profile from "../../assets/images/profile-img.png";
-import logo from "../../assets/images/logo.svg";
-
-//Import config
-// import { facebook, google } from "../../config";
+// Images
+import profile from '../../assets/images/profile-img.png'
+import logo from '../../assets/images/logo.svg'
 
 const Login = props => {
-  //meta title
-  document.title="Login | Skote - Vite React Admin & Dashboard Template";
-  const dispatch = useDispatch();
-
-  const validation = useFormik({
-    // enableReinitialize : use this flag when initial values needs to be changed
-    enableReinitialize: true,
-
-    initialValues: {
-      email: "admin@themesbrand.com" || '',
-      password: "123456" || '',
-    },
-    validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
-      password: Yup.string().required("Please Enter Your Password"),
-    }),
-    onSubmit: (values) => {
-      dispatch(loginUser(values, props.history));
-    }
-  });
+  const dispatch = useDispatch()
 
   const { error } = useSelector(state => ({
-    error: state.Login.error,
-  }));
+    error: state.Login.error
+  }))
 
-  // // handleValidSubmit
-  // const handleValidSubmit = (event, values) => {
-  //   dispatch(loginUser(values, props.history));
-  // };
+  // handleValidSubmit
+  const handleValidSubmit = (event, values) => {
+    dispatch(loginUser(values, props.history, props.t))
+  }
 
-  const signIn = (res, type) => {
-    if (type === "google" && res) {
-      const postData = {
-        name: res.profileObj.name,
-        email: res.profileObj.email,
-        token: res.tokenObj.access_token,
-        idToken: res.tokenId,
-      };
-      dispatch(socialLogin(postData, props.history, type));
-    } else if (type === "facebook" && res) {
-      const postData = {
-        name: res.name,
-        email: res.email,
-        token: res.accessToken,
-        idToken: res.tokenId,
-      };
-      dispatch(socialLogin(postData, props.history, type));
+  /**
+   * If token is expired, we check "is-kicked" from localStorage, if it exist we show toast message
+   * to explain user their session has been expired, if there is no "is-kicked" from localStorage, toast will not show
+   *
+   * We add "is-kicked" to localStorage code in "@helpers/api-helpers.js (axios interceptor)"
+   */
+
+  const isExpired = localStorage.getItem('is-kicked')
+  const isDenied = localStorage.getItem('is-denied')
+  const afterResetPassword = localStorage.getItem('reset-password-success')
+
+  useEffect(() => {
+    if (isExpired) {
+      toast(message.TOKEN_EXPIRED, 'error')
+    } else if (isDenied) {
+      toast(message.ACCESS_DENIED, 'error')
+    } else if (afterResetPassword) {
+      toast(message.RESET_PASSWORD_SUCCESS, 'success')
     }
-  };
+  }, [isExpired])
 
-  //handleGoogleLoginResponse
-  const googleResponse = response => {
-    signIn(response, "google");
-  };
+  /**
+   * When this page is reloaded or unmount, we remove "is-kicked" from localStorage, to prevent
+   * toast to show
+   */
 
-  //handleTwitterLoginResponse
-  // const twitterResponse = e => {}
+  useEffect(() => {
+    // When reloading page
+    window.onbeforeunload = function () {
+      localStorage.removeItem('is-kicked')
+      localStorage.removeItem('is-denied')
+      localStorage.removeItem('reset-password-success')
+      return
+    }
 
-  //handleFacebookLoginResponse
-  const facebookResponse = response => {
-    signIn(response, "facebook");
-  };
+    // When route change
+    return () => {
+      window.onbeforeunload = null
+      localStorage.removeItem('is-kicked')
+      localStorage.removeItem('is-denied')
+      localStorage.removeItem('reset-password-success')
+    }
+  }, [])
 
   return (
     <React.Fragment>
-
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="fas fa-home h2" />
-        </Link>
-      </div>
-      <div className="account-pages my-5 pt-sm-5">
+      <MetaTags>
+        <title>Login | YouthCamp Admin</title>
+      </MetaTags>
+      <div className='account-pages pt-md-5 pt-3'>
         <Container>
-          <Row className="justify-content-center">
+          <Row className='justify-content-center'>
             <Col md={8} lg={6} xl={5}>
-              <Card className="overflow-hidden">
-                <div className="bg-primary bg-soft">
+              <Card className='overflow-hidden'>
+                <div className='bg-primary bg-soft'>
                   <Row>
                     <Col xs={7}>
-                      <div className="text-primary p-4">
-                        <h5 className="text-primary">Welcome Back !</h5>
-                        <p>Sign in to continue to Skote.</p>
+                      <div className='text-primary p-4'>
+                        <h5 className='text-primary'>{props.t('Welcome!')}</h5>
+                        <p>{props.t('Sign in to Admin Portal')}</p>
                       </div>
                     </Col>
-                    <Col className="col-5 align-self-end">
-                      <img src={profile} alt="" className="img-fluid" />
+                    <Col className='col-5 align-self-end'>
+                      <img src={profile} alt='' className='img-fluid' />
                     </Col>
                   </Row>
                 </div>
-                <CardBody className="pt-0">
+                <CardBody className='pt-0'>
                   <div>
-                    <Link to="/" className="auth-logo-light">
-                      <div className="avatar-md profile-user-wid mb-4">
-                        <span className="avatar-title rounded-circle bg-light">
+                    <Link to='/' className='auth-logo-light'>
+                      <div className='avatar-md profile-user-wid mb-4'>
+                        <span className='avatar-title rounded-circle bg-light'>
                           <img
                             src={logo}
-                            alt=""
-                            className="rounded-circle"
-                            height="34"
+                            alt=''
+                            className='rounded-circle'
+                            height='34'
                           />
                         </span>
                       </div>
                     </Link>
                   </div>
-                  <div className="p-2">
-                    <Form
-                      className="form-horizontal"
-                      onSubmit={(e) => {
-                        e.preventDefault();
-                        validation.handleSubmit();
-                        return false;
+                  <div className='p-2'>
+                    <AvForm
+                      className='form-horizontal'
+                      onValidSubmit={(e, v) => {
+                        handleValidSubmit(e, v)
                       }}
                     >
-                      {error ? <Alert color="danger">{error}</Alert> : null}
-
-                      <div className="mb-3">
-                        <Label className="form-label">Email</Label>
-                        <Input
-                          name="email"
-                          className="form-control"
-                          placeholder="Enter email"
-                          type="email"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          value={validation.values.email || ""}
-                          invalid={
-                            validation.touched.email && validation.errors.email ? true : false
-                          }
+                      {error ? <Alert color='danger'>{error}</Alert> : null}
+                      <div className='mb-2'>
+                        <AvField
+                          name='email'
+                          label='Email'
+                          className='form-control'
+                          placeholder='Enter email'
+                          type='email'
+                          required
                         />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
-                        ) : null}
                       </div>
 
-                      <div className="mb-3">
-                        <Label className="form-label">Password</Label>
-                        <Input
-                          name="password"
-                          value={validation.values.password || ""}
-                          type="password"
-                          placeholder="Enter Password"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          invalid={
-                            validation.touched.password && validation.errors.password ? true : false
-                          }
+                      <div className='mb-2'>
+                        <AvField
+                          name='password'
+                          label='Password'
+                          type='password'
+                          required
+                          placeholder='Enter Password'
                         />
-                        {validation.touched.password && validation.errors.password ? (
-                          <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
-                        ) : null}
                       </div>
 
-                      <div className="form-check">
-                        <input
-                          type="checkbox"
-                          className="form-check-input"
-                          id="customControlInline"
-                        />
-                        <label
-                          className="form-check-label"
-                          htmlFor="customControlInline"
-                        >
-                          Remember me
-                        </label>
-                      </div>
-
-                      <div className="mt-3 d-grid">
+                      <div className='mt-3 d-grid'>
                         <button
-                          className="btn btn-primary btn-block"
-                          type="submit"
+                          className='btn btn-primary btn-block'
+                          type='submit'
                         >
                           Log In
                         </button>
                       </div>
-
-                      <div className="mt-4 text-center">
-                        <h5 className="font-size-14 mb-3">Sign in with</h5>
-
-                        <ul className="list-inline">
-                          {/* <li className="list-inline-item">
-                            <FacebookLogin
-                              appId={facebook.APP_ID}
-                              autoLoad={false}
-                              callback={facebookResponse}
-                              render={renderProps => (
-                                <Link
-                                  to="#"
-                                  className="social-list-item bg-primary text-white border-primary"
-                                  onClick={renderProps.onClick}
-                                >
-                                  <i className="mdi mdi-facebook" />
-                                </Link>
-                              )}
-                            />
-                          </li> */}
-                          {/*<li className="list-inline-item">*/}
-                          {/*  <TwitterLogin*/}
-                          {/*    loginUrl={*/}
-                          {/*      "http://localhost:4000/api/v1/auth/twitter"*/}
-                          {/*    }*/}
-                          {/*    onSuccess={this.twitterResponse}*/}
-                          {/*    onFailure={this.onFailure}*/}
-                          {/*    requestTokenUrl={*/}
-                          {/*      "http://localhost:4000/api/v1/auth/twitter/revers"*/}
-                          {/*    }*/}
-                          {/*    showIcon={false}*/}
-                          {/*    tag={"div"}*/}
-                          {/*  >*/}
-                          {/*    <a*/}
-                          {/*      href=""*/}
-                          {/*      className="social-list-item bg-info text-white border-info"*/}
-                          {/*    >*/}
-                          {/*      <i className="mdi mdi-twitter"/>*/}
-                          {/*    </a>*/}
-                          {/*  </TwitterLogin>*/}
-                          {/*</li>*/}
-                          {/* <li className="list-inline-item">
-                            <GoogleLogin
-                              clientId="23144678283-oek7ncjmmrgkgmi2i56sc411gp71a8sp.apps.googleusercontent.com"
-                              render={renderProps => (
-                                <Link
-                                  to="#"
-                                  className="social-list-item bg-danger text-white border-danger"
-                                  onClick={renderProps.onClick}
-                                >
-                                  <i className="mdi mdi-google" />
-                                </Link>
-                              )}
-                              onSuccess={googleResponse}
-                              onFailure={() => { }}
-                            />
-                          </li> */}
-                        </ul>
+                      <div className='mt-3 d-sm-flex align-items-center justify-content-center '>
+                        <Link to='/forgot-password'>Lupa Password</Link>
                       </div>
-
-                      <div className="mt-4 text-center">
-                        <Link to="/forgot-password" className="text-muted">
-                          <i className="mdi mdi-lock me-1" />
-                          Forgot your password?
-                        </Link>
-                      </div>
-                    </Form>
+                    </AvForm>
                   </div>
                 </CardBody>
               </Card>
-              <div className="mt-5 text-center">
-                <p>
-                  Don&#39;t have an account ?{" "}
-                  <Link to="/register" className="fw-medium text-primary">
-                    {" "}
-                    Signup now{" "}
-                  </Link>{" "}
-                </p>
-                <p>
-                  © {new Date().getFullYear()} Skote. Crafted with{" "}
-                  <i className="mdi mdi-heart text-danger" /> by Themesbrand
-                </p>
+              <div className='mt-5 text-center'>
+                <p>© {new Date().getFullYear()} YouthCamp</p>
               </div>
             </Col>
           </Row>
         </Container>
       </div>
     </React.Fragment>
-  );
-};
-
-export default withRouter(Login);
+  )
+}
 
 Login.propTypes = {
   history: PropTypes.object,
-};
+  t: PropTypes.any
+}
+
+export default withRouter(withTranslation()(Login))

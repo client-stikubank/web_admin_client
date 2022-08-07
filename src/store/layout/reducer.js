@@ -9,8 +9,8 @@ import {
   CHANGE_SIDEBAR_THEME_IMAGE,
   CHANGE_PRELOADER,
   TOGGLE_LEFTMENU,
-  SHOW_SIDEBAR,
-} from "./actionTypes"
+  SHOW_SIDEBAR
+} from './actionTypes'
 
 //constants
 import {
@@ -19,13 +19,13 @@ import {
   topBarThemeTypes,
   leftBarThemeImageTypes,
   leftSidebarTypes,
-  leftSideBarThemeTypes,
-} from "../../constants/layout";
+  leftSideBarThemeTypes
+} from '../../constants/layout'
 
 const INIT_STATE = {
   layoutType: layoutTypes.VERTICAL,
   layoutWidth: layoutWidthTypes.FLUID,
-  leftSideBarTheme: leftSideBarThemeTypes.DARK,
+  leftSideBarTheme: leftSideBarThemeTypes.COLORED,
   leftSideBarThemeImage: leftBarThemeImageTypes.NONE,
   leftSideBarType: leftSidebarTypes.DEFAULT,
   topbarTheme: topBarThemeTypes.LIGHT,
@@ -33,7 +33,7 @@ const INIT_STATE = {
   showRightSidebar: false,
   isMobile: false,
   showSidebar: true,
-  leftMenu: false,
+  leftMenu: false
 }
 
 const Layout = (state = INIT_STATE, action) => {
@@ -41,53 +41,53 @@ const Layout = (state = INIT_STATE, action) => {
     case CHANGE_LAYOUT:
       return {
         ...state,
-        layoutType: action.payload,
+        layoutType: action.payload
       }
     case CHANGE_PRELOADER:
       return {
         ...state,
-        isPreloader: action.payload,
+        isPreloader: action.payload
       }
 
     case CHANGE_LAYOUT_WIDTH:
       return {
         ...state,
-        layoutWidth: action.payload,
+        layoutWidth: action.payload
       }
     case CHANGE_SIDEBAR_THEME:
       return {
         ...state,
-        leftSideBarTheme: action.payload,
+        leftSideBarTheme: action.payload
       }
     case CHANGE_SIDEBAR_THEME_IMAGE:
       return {
         ...state,
-        leftSideBarThemeImage: action.payload,
+        leftSideBarThemeImage: action.payload
       }
     case CHANGE_SIDEBAR_TYPE:
       return {
         ...state,
-        leftSideBarType: action.payload.sidebarType,
+        leftSideBarType: action.payload.sidebarType
       }
     case CHANGE_TOPBAR_THEME:
       return {
         ...state,
-        topbarTheme: action.payload,
+        topbarTheme: action.payload
       }
     case SHOW_RIGHT_SIDEBAR:
       return {
         ...state,
-        showRightSidebar: action.payload,
+        showRightSidebar: action.payload
       }
     case SHOW_SIDEBAR:
       return {
         ...state,
-        showSidebar: action.payload,
+        showSidebar: action.payload
       }
     case TOGGLE_LEFTMENU:
       return {
         ...state,
-        leftMenu: action.payload,
+        leftMenu: action.payload
       }
 
     default:

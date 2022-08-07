@@ -1,41 +1,54 @@
-import axios from "axios"
-import accessToken from "./jwt-token-access/accessToken"
+import axios from 'axios'
 
-//pass new generated access token here
-const token = accessToken
-
-//apply base url for axios
-const API_URL = ""
+// API
+import {
+  BACKEND_API_URL,
+  BACKEND_API_CLIENT,
+  BACKEND_API_SECRET
+} from './environment'
 
 const axiosApi = axios.create({
-    baseURL: API_URL,
+  baseURL: BACKEND_API_URL,
+  headers: {
+    uid: BACKEND_API_CLIENT,
+    secret: BACKEND_API_SECRET
+  }
 })
 
-axiosApi.defaults.headers.common["Authorization"] = token
-
 axiosApi.interceptors.response.use(
-    response => response,
-    error => Promise.reject(error)
+  response => response,
+  error => {
+    if (error.response.status === 401) {
+      window.location.replace('/logout')
+      localStorage.setItem('is-kicked', 'true')
+    }
+    return Promise.reject(error)
+  }
 )
 
 export async function get(url, config = {}) {
-    return await axiosApi.get(url, {...config }).then(response => response.data)
+  return await axiosApi.get(url, { ...config }).then(response => response.data)
 }
 
 export async function post(url, data, config = {}) {
-    return axiosApi
-        .post(url, {...data }, {...config })
-        .then(response => response.data)
+  return axiosApi
+    .post(url, { ...data }, { ...config })
+    .then(response => response.data)
+}
+
+export async function postFormData(url, data, headers = {}) {
+  const config = { method: 'POST', url, data, headers }
+  return await axiosApi(config)
 }
 
 export async function put(url, data, config = {}) {
-    return axiosApi
-        .put(url, {...data }, {...config })
-        .then(response => response.data)
+  return axiosApi
+    .put(url, { ...data }, { ...config })
+    .then(response => response.data)
 }
 
 export async function del(url, config = {}) {
-    return await axiosApi
-        .delete(url, {...config })
-        .then(response => response.data)
+  return await axiosApi
+    .delete(url, { ...config })
+    .then(response => response.data)
 }

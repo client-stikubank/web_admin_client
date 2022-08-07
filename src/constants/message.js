@@ -1,0 +1,16 @@
+export const TOKEN_EXPIRED = 'Sesi telah habis, silahkan login kembali'
+export const ACCESS_DENIED = 'Maaf Anda tidak memiliki akses'
+export const FETCH_FAIL = 'Gagal melakukan pengambilan data'
+export const CREATE_DATA_SUCCESS = 'Berhasil membuat data baru'
+export const CREATE_DATA_FAIL = 'Gagal membuat data baru'
+export const UPDATE_DATA_SUCCESS = 'Berhasil melakukan pembaruan data'
+export const UPDATE_DATA_FAIL = 'Gagal melakukan pembaruan data'
+export const DELETE_DATA_SUCCESS = 'Berhasil melakukan penghapusan data'
+export const DELETE_DATA_FAIL = 'Gagal melakukan penghapusan data'
+export const DOWNLOAD_DATA_SUCCESS = 'Berhasil melakukan pengunduhan data'
+export const DOWNLOAD_DATA_FAIL = 'Gagal melakukan pengunduhan data'
+export const RESET_PASSWORD_SUCCESS =
+  'Password berhasil diupdate, silahkan login'
+export const COMMON_ERROR = 'Terjadi kesalahan, silahkan ulangi permintaan'
+
+export const UNCOLLECT_FAIL = 'Gagal melakukan uncollect'

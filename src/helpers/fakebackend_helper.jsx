@@ -1,10 +1,10 @@
-import axios from "axios"
-import { del, get, post, put } from "./api_helper"
-import * as url from "./url_helper"
+import axios from 'axios'
+import { del, get, post, put } from './api_helper'
+import * as url from './url_helper'
 
 // Gets the logged in user data from local session
 const getLoggedInUser = () => {
-  const user = localStorage.getItem("user")
+  const user = localStorage.getItem('user')
   if (user) return JSON.parse(user)
   return null
 }
@@ -27,14 +27,14 @@ const postFakeRegister = data => {
       if (err.response && err.response.status) {
         switch (err.response.status) {
           case 404:
-            message = "Sorry! the page you are looking for could not be found"
+            message = 'Sorry! the page you are looking for could not be found'
             break
           case 500:
             message =
-              "Sorry! something went wrong, please contact our support team"
+              'Sorry! something went wrong, please contact our support team'
             break
           case 401:
-            message = "Invalid credentials"
+            message = 'Invalid credentials'
             break
           default:
             message = err[1]
@@ -69,14 +69,14 @@ const postJwtRegister = (url, data) => {
       if (err.response && err.response.status) {
         switch (err.response.status) {
           case 404:
-            message = "Sorry! the page you are looking for could not be found"
+            message = 'Sorry! the page you are looking for could not be found'
             break
           case 500:
             message =
-              "Sorry! something went wrong, please contact our support team"
+              'Sorry! something went wrong, please contact our support team'
             break
           case 401:
-            message = "Invalid credentials"
+            message = 'Invalid credentials'
             break
           default:
             message = err[1]
@@ -92,9 +92,6 @@ const postJwtLogin = data => post(url.POST_FAKE_JWT_LOGIN, data)
 
 // postForgetPwd
 const postJwtForgetPwd = data => post(url.POST_FAKE_JWT_PASSWORD_FORGET, data)
-
-// postSocialLogin
-export const postSocialLogin = data => post(url.SOCIAL_LOGIN, data)
 
 // get Products
 export const getProducts = () => get(url.GET_PRODUCTS)
@@ -129,7 +126,7 @@ export const getGroups = () => get(url.GET_GROUPS)
 export const getContacts = () => get(url.GET_CONTACTS)
 
 // get messages
-export const getMessages = (roomId = "") =>
+export const getMessages = (roomId = '') =>
   get(`${url.GET_MESSAGES}/${roomId}`, { params: { roomId } })
 
 // post messages
@@ -256,24 +253,24 @@ const getProductComents = () => get(url.GET_PRODUCT_COMMENTS)
 
 const onLikeComment = (commentId, productId) => {
   return post(`${url.ON_LIKNE_COMMENT}/${productId}/${commentId}`, {
-    params: { commentId, productId },
+    params: { commentId, productId }
   })
 }
 const onLikeReply = (commentId, productId, replyId) => {
   return post(`${url.ON_LIKNE_COMMENT}/${productId}/${commentId}/${replyId}`, {
-    params: { commentId, productId, replyId },
+    params: { commentId, productId, replyId }
   })
 }
 
 const onAddReply = (commentId, productId, replyText) => {
   return post(`${url.ON_ADD_REPLY}/${productId}/${commentId}`, {
-    params: { commentId, productId, replyText },
+    params: { commentId, productId, replyText }
   })
 }
 
 const onAddComment = (productId, commentText) => {
   return post(`${url.ON_ADD_COMMENT}/${productId}`, {
-    params: { productId, commentText },
+    params: { productId, commentText }
   })
 }
 
@@ -292,5 +289,5 @@ export {
   onLikeComment,
   onLikeReply,
   onAddReply,
-  onAddComment,
+  onAddComment
 }
