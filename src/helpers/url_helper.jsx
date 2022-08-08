@@ -1,11 +1,7 @@
 export const POST_LOGIN = '/admin/login'
 export const POST_LOGOUT = '/users/oauth/revoke'
 
-export const GET_CARNIVALS = '/admin/carnivals'
-export const GET_CARNIVAL_DETAILS = '/admin/carnival'
-export const POST_CARNIVAL = '/admin/carnivals'
-export const PUT_CARNIVAL = '/admin/carnivals'
-export const DELETE_CARNIVAL = '/admin/carnival'
+export const URL_CARNIVALS = '/admin/carnivals'
 
 // ======================
 

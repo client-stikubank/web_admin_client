@@ -17,12 +17,7 @@ import {
 import { addNewCarnival, updateCarnival, closeModal } from '@/store/actions'
 
 // Helpers
-import {
-  toDate,
-  toFormattedDate,
-  todayFormat,
-  toOptionsFormat
-} from '@/helpers/format/date'
+import { toDate, toFormattedDate, todayFormat } from '@/helpers/format/date'
 
 const FormData = ({ currentData }) => {
   const dispatch = useDispatch()
@@ -105,6 +100,14 @@ const FormData = ({ currentData }) => {
           <span className='text-danger invalid-feedback'>
             Tidak boleh kosong!
           </span>
+        </div>
+        <div className='mb-2'>
+          <Label>Deskripsi</Label>
+          <InputField
+            type='textarea'
+            className='form-control'
+            {...register('description')}
+          />
         </div>
       </div>
       <div className='modal-footer'>

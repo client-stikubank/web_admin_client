@@ -3,7 +3,7 @@ import * as url from '@/helpers/url_helper'
 import * as storage from '@/helpers/storage'
 
 export const getCarnivals = params => {
-  return get(url.GET_CARNIVALS, {
+  return get(url.URL_CARNIVALS, {
     params,
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
@@ -12,7 +12,7 @@ export const getCarnivals = params => {
 }
 
 export const getCarnivalsDetails = id => {
-  return get(`${url.GET_CARNIVAL_DETAILS}/${id}`, {
+  return get(`${url.URL_CARNIVALS}/${id}`, {
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }
@@ -20,7 +20,7 @@ export const getCarnivalsDetails = id => {
 }
 
 export const addNewCarnival = data => {
-  return post(url.POST_CARNIVAL, data, {
+  return post(url.URL_CARNIVALS, data, {
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }
@@ -28,7 +28,7 @@ export const addNewCarnival = data => {
 }
 
 export const updateCarnival = data => {
-  return put(url.PUT_CARNIVAL, data, {
+  return put(url.URL_CARNIVALS, data, {
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }
@@ -36,7 +36,7 @@ export const updateCarnival = data => {
 }
 
 export const deleteCarnival = id => {
-  return del(`${url.DELETE_CARNIVAL}/${id}`, {
+  return del(`${url.URL_CARNIVALS}/${id}`, {
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }

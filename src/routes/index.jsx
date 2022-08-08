@@ -15,6 +15,7 @@ import Dashboard from '../pages/Dashboard/index'
 
 // Carnival
 import Carnival from '../pages/Carnival'
+import CarnivalOverview from '../pages/Carnival/overview'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
@@ -25,7 +26,8 @@ const authProtectedRoutes = [
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> },
-  { path: '/carnival', component: Carnival }
+  { path: '/carnival', component: Carnival },
+  { path: '/carnival/:id', component: CarnivalOverview }
 ]
 
 const publicRoutes = [

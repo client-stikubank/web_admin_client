@@ -4,23 +4,14 @@ import { Link } from 'react-router-dom'
 import { map, capitalize } from 'lodash'
 import { Badge, Card, CardBody, Col, UncontrolledTooltip } from 'reactstrap'
 
-// Format
+// Helpers
+import { statusColor } from '@/helpers/format/color'
 import { idDate } from '@/helpers/format/date'
 
+// Images
 import carnivalPlaceholder from '@/assets/images/carnival-placeholder.png'
 
 const CardProject = ({ carnivals }) => {
-  const statusColor = status => {
-    switch (status) {
-      case 'active':
-        return 'success'
-      case 'finish':
-        return 'warning'
-      case 'inactive':
-      default:
-        return 'secondary'
-    }
-  }
   return (
     <React.Fragment>
       {map(carnivals, (carnival, key) => (
@@ -33,7 +24,7 @@ const CardProject = ({ carnivals }) => {
                     <img
                       src={carnival?.image || carnivalPlaceholder}
                       alt=''
-                      width='100%'
+                      width='80'
                     />
                   </span>
                 </div>
@@ -41,14 +32,14 @@ const CardProject = ({ carnivals }) => {
                 <div className='flex-grow-1 overflow-hidden'>
                   <h5 className='text-truncate font-size-15'>
                     <Link
-                      to={`/carnivals-overview/${carnival?.id}`}
+                      to={`/carnival/${carnival?.id}`}
                       className='text-dark'
                     >
-                      {carnival?.name}
+                      {carnival?.attributes.name}
                     </Link>
                   </h5>
-                  <p className='text-muted mb-4'>
-                    {carnival?.description || 'Description'}
+                  <p className='text-muted mb-4 text-truncate'>
+                    {carnival?.attributes.description}
                   </p>
                 </div>
               </div>
@@ -56,13 +47,18 @@ const CardProject = ({ carnivals }) => {
             <div className='px-4 py-3 border-top'>
               <ul className='list-inline mb-0'>
                 <li className='list-inline-item me-3'>
-                  <Badge className={'bg-' + statusColor(carnival?.status)}>
-                    {capitalize(carnival?.status)}
+                  <Badge
+                    className={
+                      'font-size-12 bg-' +
+                      statusColor(carnival?.attributes.status)
+                    }
+                  >
+                    {capitalize(carnival?.attributes.status)}
                   </Badge>
                 </li>
                 <li className='list-inline-item me-3' id='dueDate'>
-                  <i className='bx bx-calendar me-1' />{' '}
-                  {idDate(carnival?.finished_at)}
+                  <i className='bx bx-calendar-check me-1' />{' '}
+                  {idDate(carnival?.attributes.finished_at)}
                   <UncontrolledTooltip placement='top' target='dueDate'>
                     Waktu selesai
                   </UncontrolledTooltip>

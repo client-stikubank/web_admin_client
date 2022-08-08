@@ -42,7 +42,7 @@ const carnivals = (state = INIT_STATE, action) => {
       return {
         ...state,
         carnivals: {
-          data: [action.payload, ...state.carnivals.data],
+          data: [action.payload.data, ...state.carnivals.data],
           pagination: state.carnivals.pagination
         },
         formStatus: 'createSuccess'
@@ -57,7 +57,7 @@ const carnivals = (state = INIT_STATE, action) => {
     case GET_CARNIVAL_DETAIL_SUCCESS:
       return {
         ...state,
-        carnivalDetail: action.payload
+        carnivalDetail: action.payload.data
       }
 
     case UPDATE_CARNIVAL_SUCCESS:

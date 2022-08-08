@@ -12,14 +12,15 @@ import { withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { map } from 'lodash'
 
+// Actions
+import { getCarnivals, setModal, closeModal } from '@/store/actions'
+
 // Components
 import NoData from '@/components/Common/NoData'
 
 // Child
 import CarnivalCard from './card'
 import { ModalCreate } from './modals'
-
-import { getCarnivals, setModal, closeModal } from '@/store/actions'
 
 const Carnival = props => {
   document.title = 'Karnaval | Master Data'
