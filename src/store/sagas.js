@@ -19,6 +19,7 @@ import dashboardSaga from './dashboard/saga'
 import dashboardSaasSaga from './dashboard-saas/saga'
 
 import CarnivalSaga from './carnival/saga'
+import StageSaga from './stage/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     fork(ForgetSaga),
     fork(ProfileSaga),
     fork(LayoutSaga),
-    fork(CarnivalSaga)
+    fork(CarnivalSaga),
+    fork(StageSaga)
   ])
 }

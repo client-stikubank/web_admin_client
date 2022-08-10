@@ -11,6 +11,7 @@ import ForgetPassword from './auth/forgetpwd/reducer'
 import Profile from './auth/profile/reducer'
 
 import Carnival from './carnival/reducer'
+import Stage from './stage/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   Account,
   ForgetPassword,
   Profile,
-  Carnival
+  Carnival,
+  Stage
 })
 
 export default rootReducer

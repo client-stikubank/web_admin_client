@@ -56,17 +56,17 @@ const CardProject = ({ carnivals }) => {
                     {capitalize(carnival?.attributes.status)}
                   </Badge>
                 </li>
-                <li className='list-inline-item me-3' id='dueDate'>
+                <li className='list-inline-item me-3' id='finishDate'>
                   <i className='bx bx-calendar-check me-1' />{' '}
                   {idDate(carnival?.attributes.finished_at)}
-                  <UncontrolledTooltip placement='top' target='dueDate'>
+                  <UncontrolledTooltip placement='top' target='finishDate'>
                     Waktu selesai
                   </UncontrolledTooltip>
                 </li>
-                <li className='list-inline-item me-3' id='comments'>
+                <li className='list-inline-item me-3' id='users'>
                   <i className='bx bx-user me-1' />{' '}
                   {carnival?.commentsCount || 0}
-                  <UncontrolledTooltip placement='top' target='comments'>
+                  <UncontrolledTooltip placement='top' target='users'>
                     Peserta
                   </UncontrolledTooltip>
                 </li>

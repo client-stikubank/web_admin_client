@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 import { Col, Container, Row } from 'reactstrap'
 
@@ -10,8 +9,7 @@ import { getCarnivalDetail } from '@/store/actions'
 
 import CarnivalDetail from './carnivalDetail'
 import TeamMembers from './teamMembers'
-import Events from './events'
-import { options, series } from '/src/common/data/projects'
+import Stages from './stages'
 import AttachedFiles from './attachedFiles'
 import Comments from './comments'
 
@@ -35,7 +33,7 @@ const ProjectsOverview = props => {
     if (params && params.id) {
       dispatch(getCarnivalDetail(params.id))
     }
-  }, [params, getCarnivalDetail])
+  }, [getCarnivalDetail])
 
   return (
     <React.Fragment>
@@ -61,7 +59,7 @@ const ProjectsOverview = props => {
 
               <Row>
                 <Col lg='4'>
-                  <Events carnival={carnivalDetail} />
+                  <Stages />
                 </Col>
 
                 <Col lg='4'>

@@ -3,6 +3,8 @@ export const POST_LOGOUT = '/users/oauth/revoke'
 
 export const URL_CARNIVALS = '/admin/carnivals'
 
+export const URL_STAGES = './admin/stages'
+
 // ======================
 
 //REGISTER

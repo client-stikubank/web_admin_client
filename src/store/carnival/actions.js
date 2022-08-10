@@ -28,6 +28,26 @@ export const getCarnivalsSuccess = (carnivals, params) => ({
   params
 })
 
+export const getCarnivalsFail = error => ({
+  type: GET_CARNIVALS_FAIL,
+  payload: error
+})
+
+export const getCarnivalDetail = carnivalId => ({
+  type: GET_CARNIVAL_DETAIL,
+  carnivalId
+})
+
+export const getCarnivalDetailSuccess = carnivalDetails => ({
+  type: GET_CARNIVAL_DETAIL_SUCCESS,
+  payload: carnivalDetails
+})
+
+export const getCarnivalDetailFail = error => ({
+  type: GET_CARNIVAL_DETAIL_FAIL,
+  payload: error
+})
+
 export const addNewCarnival = carnival => ({
   type: ADD_NEW_CARNIVAL,
   payload: carnival
@@ -70,26 +90,6 @@ export const deleteCarnivalSuccess = carnival => ({
 
 export const deleteCarnivalFail = error => ({
   type: DELETE_CARNIVAL_FAIL,
-  payload: error
-})
-
-export const getCarnivalsFail = error => ({
-  type: GET_CARNIVALS_FAIL,
-  payload: error
-})
-
-export const getCarnivalDetail = carnivalId => ({
-  type: GET_CARNIVAL_DETAIL,
-  carnivalId
-})
-
-export const getCarnivalDetailSuccess = carnivalDetails => ({
-  type: GET_CARNIVAL_DETAIL_SUCCESS,
-  payload: carnivalDetails
-})
-
-export const getCarnivalDetailFail = error => ({
-  type: GET_CARNIVAL_DETAIL_FAIL,
   payload: error
 })
 

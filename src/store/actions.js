@@ -8,3 +8,4 @@ export * from './auth/forgetpwd/actions'
 export * from './auth/profile/actions'
 
 export * from './carnival/actions'
+export * from './stage/actions'

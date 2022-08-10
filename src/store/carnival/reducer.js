@@ -38,6 +38,7 @@ const carnivals = (state = INIT_STATE, action) => {
         ...state,
         error: action.payload
       }
+
     case ADD_CARNIVAL_SUCCESS:
       return {
         ...state,
@@ -60,6 +61,12 @@ const carnivals = (state = INIT_STATE, action) => {
         carnivalDetail: action.payload.data
       }
 
+    case GET_CARNIVAL_DETAIL_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      }
+
     case UPDATE_CARNIVAL_SUCCESS:
       return {
         ...state,
@@ -71,7 +78,7 @@ const carnivals = (state = INIT_STATE, action) => {
           ),
           pagination: state.carnivals.pagination
         },
-        branchDetail: action.payload
+        carnivalDetail: action.payload
       }
 
     case UPDATE_CARNIVAL_FAIL:
@@ -92,12 +99,6 @@ const carnivals = (state = INIT_STATE, action) => {
       }
 
     case DELETE_CARNIVAL_FAIL:
-      return {
-        ...state,
-        error: action.payload
-      }
-
-    case GET_CARNIVAL_DETAIL_FAIL:
       return {
         ...state,
         error: action.payload
