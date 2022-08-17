@@ -2,8 +2,8 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 
-import NoDataImg from '@/assets/images/no-data.png'
-import DataLoadImg from '@/assets/images/data-load.png'
+import NoDataImg from '@/assets/images/data-empty.jpg'
+import DataLoadImg from '@/assets/images/data-loading.gif'
 
 const NoData = ({ isLoading }) => {
   return (
@@ -16,8 +16,9 @@ const NoData = ({ isLoading }) => {
                 <div className='maintenance-img'>
                   <img
                     src={isLoading ? DataLoadImg : NoDataImg}
-                    alt=''
-                    className='img-fluid rounded shadow-sm mx-auto d-block'
+                    height='100'
+                    alt='data-placeholder-image'
+                    className='img-fluid mx-auto d-block'
                   />
                 </div>
               </Col>

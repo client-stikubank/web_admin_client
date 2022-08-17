@@ -39,7 +39,7 @@ table.dataTable thead .sorting_desc:before,
 table.dataTable thead .sorting_asc_disabled:before,
 table.dataTable thead .sorting_desc_disabled:before {
   right: 1em;
-  content: "\2191";
+  content: '\2191';
 }
 table.dataTable thead .sorting:after,
 table.dataTable thead .sorting_asc:after,
@@ -47,7 +47,7 @@ table.dataTable thead .sorting_desc:after,
 table.dataTable thead .sorting_asc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:after {
   right: 0.5em;
-  content: "\2193";
+  content: '\2193';
 }
 table.dataTable thead .sorting_asc:before,
 table.dataTable thead .sorting_desc:after {
@@ -129,12 +129,56 @@ div.table-responsive > div.dataTables_wrapper > div.row {
 div.table-responsive
   > div.dataTables_wrapper
   > div.row
-  > div[class^="col-"]:first-child {
+  > div[class^='col-']:first-child {
   padding-left: 0;
 }
 div.table-responsive
   > div.dataTables_wrapper
   > div.row
-  > div[class^="col-"]:last-child {
+  > div[class^='col-']:last-child {
   padding-right: 0;
+}
+tbody tr {
+  cursor: pointer;
+}
+.dropup > .caret {
+  margin: 10px 0;
+  color: #cccccc;
+}
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+  content: '';
+  border-top: 0;
+  border-bottom: 4px dashed;
+}
+.react-bootstrap-table th > .react-bootstrap-table-sort-order > .caret {
+  margin: 10px 6.5px;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid\9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.selection-cell-header {
+  width: 38px;
+}
+
+.btn-secondary.dropdown-toggle {
+  background-color: #50a5f1;
+  border-color: #50a5f1;
+  &:hover,
+  &:active,
+  &:focus {
+    color: #fff;
+    background-color: #448ccd;
+    border-color: #4084c1;
+  }
 }

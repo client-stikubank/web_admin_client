@@ -1,22 +1,27 @@
-import React from "react"
-import { AsyncPaginate } from "react-select-async-paginate"
-import PropTypes from "prop-types"
-import _ from "lodash"
+import React from 'react'
+import { AsyncPaginate } from 'react-select-async-paginate'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
 export const AsyncSelectField = React.forwardRef((props, ref) => {
   const loadOptions = async (searchQuery, loadedOptions, { page }) => {
-    let params = {}
-    params[`q[${props.label}_${props.query || "cont"}]`] = searchQuery
-    params = { ...params, ...props.defaultParams }
+    let params = {
+      query: {
+        [props.query]: searchQuery,
+        ...props.defaultParams
+      }
+    }
     const response = await props.api({
       page,
       ...params
     })
 
     return {
-      options: _.map(response.data, (data) => ({
+      options: _.map(response.data, data => ({
         value: data.id,
-        label: props.renderOptions ? props.renderOptions(data) : data[`${props.label}`]
+        label: props.renderOptions
+          ? props.renderOptions(data)
+          : data[`${props.label}`]
       })),
       hasMore: response.pagination.next_page > 1,
       additional: {
@@ -26,10 +31,10 @@ export const AsyncSelectField = React.forwardRef((props, ref) => {
   }
 
   const customStyles = {
-    valueContainer: (provided) => ({
+    valueContainer: provided => ({
       ...provided,
       height: props.height || provided.height
-    }),
+    })
   }
 
   return (
@@ -40,7 +45,7 @@ export const AsyncSelectField = React.forwardRef((props, ref) => {
       additional={{
         page: 1
       }}
-      key={props.parentId || "noID"}
+      key={props.parentId || 'noID'}
       {...props}
     />
   )

@@ -9,3 +9,5 @@ export * from './auth/profile/actions'
 
 export * from './carnival/actions'
 export * from './stage/actions'
+export * from './camp/actions'
+export * from './stage-camp-schedule/actions'

@@ -12,6 +12,8 @@ import Profile from './auth/profile/reducer'
 
 import Carnival from './carnival/reducer'
 import Stage from './stage/reducer'
+import Camp from './camp/reducer'
+import StageCampSchedule from './stage-camp-schedule/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -22,7 +24,9 @@ const rootReducer = combineReducers({
   ForgetPassword,
   Profile,
   Carnival,
-  Stage
+  Stage,
+  Camp,
+  StageCampSchedule
 })
 
 export default rootReducer

@@ -1,12 +1,12 @@
-@import "./icons.scss";
+@import './icons.scss';
 
 // Dark Theme
 // @import "./bootstrap-dark.scss";
 // @import "./app-dark.scss";
 
 // Light Theme
-@import "./bootstrap.scss";
-@import "./app.scss";
+@import './bootstrap.scss';
+@import './app.scss';
 
 // // RTL Mode
 // @import "./rtl/bootstrap-rtl";
@@ -22,6 +22,24 @@
 body {
   * {
     outline: none;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hoverable {
+  transition: opacity 0.25s ease;
+  &:hover {
+    opacity: 0.8;
+  }
+  &-reverse {
+    opacity: 0.8;
+    transition: opacity 0.25s ease;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

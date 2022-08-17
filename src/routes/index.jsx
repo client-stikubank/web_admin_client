@@ -17,6 +17,9 @@ import Dashboard from '../pages/Dashboard/index'
 import Carnival from '../pages/Carnival'
 import CarnivalOverview from '../pages/Carnival/overview'
 
+// Camp
+import Camp from '../pages/Camp'
+
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
 
@@ -27,7 +30,8 @@ const authProtectedRoutes = [
   // eslint-disable-next-line react/display-name
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> },
   { path: '/carnival', component: Carnival },
-  { path: '/carnival/:id', component: CarnivalOverview }
+  { path: '/carnival/:id', component: CarnivalOverview },
+  { path: '/camp', component: Camp }
 ]
 
 const publicRoutes = [

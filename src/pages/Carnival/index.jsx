@@ -23,7 +23,7 @@ import CarnivalCard from './card'
 import { ModalCreate } from './modals'
 
 const Carnival = props => {
-  document.title = 'Karnaval | Master Data'
+  document.title = 'Karnaval | Admin YouthCamp'
   const [page, setPage] = useState(1)
   const dispatch = useDispatch()
 
@@ -72,20 +72,8 @@ const Carnival = props => {
       <div className='page-content'>
         <Container fluid>
           <div className='d-flex justify-content-between align-items-center mb-3'>
-            <div>
-              <h2>Karnaval</h2>
-            </div>
+            <h4>Karnaval</h4>
             <div className='d-flex align-items-center'>
-              <form className='app-search d-none d-lg-block mx-3'>
-                <div className='position-relative'>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Cari...'
-                  />
-                  <span className='bx bx-search-alt' />
-                </div>
-              </form>
               <Button
                 type='button'
                 color='success'

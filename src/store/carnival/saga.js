@@ -18,8 +18,7 @@ import {
   updateCarnivalFail,
   deleteCarnivalSuccess,
   deleteCarnivalFail,
-  toggleLoading,
-  getStagesSuccess
+  toggleLoading
 } from '../actions'
 
 import {
@@ -54,7 +53,6 @@ function* fetchCarnivalDetail({ carnivalId }) {
   try {
     const response = yield call(getCarnivalsDetails, carnivalId)
     yield put(getCarnivalDetailSuccess(response))
-    yield put(getStagesSuccess(response?.data?.attributes?.stages))
   } catch (error) {
     yield put(getCarnivalDetailFail(error))
   }

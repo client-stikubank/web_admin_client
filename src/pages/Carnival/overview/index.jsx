@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { isEmpty } from 'lodash'
@@ -13,10 +14,7 @@ import Stages from './stages'
 import AttachedFiles from './attachedFiles'
 import Comments from './comments'
 
-//redux
-import { useSelector, useDispatch } from 'react-redux'
-
-const ProjectsOverview = props => {
+const CarnivalOverview = props => {
   document.title = 'Pratinjau Karnaval | YouthCamp'
 
   const dispatch = useDispatch()
@@ -40,9 +38,7 @@ const ProjectsOverview = props => {
       <div className='page-content'>
         <Container fluid>
           <div className='d-flex justify-content-between align-items-center mb-3'>
-            <div>
-              <h2>Pratinjau Karnaval</h2>
-            </div>
+            <h4>Pratinjau Karnaval</h4>
           </div>
 
           {!isEmpty(carnivalDetail) && (
@@ -52,23 +48,23 @@ const ProjectsOverview = props => {
                   <CarnivalDetail carnival={carnivalDetail} />
                 </Col>
 
-                <Col lg='4'>
+                {/* <Col lg='4'>
                   <TeamMembers team={carnivalDetail?.team} />
-                </Col>
+                </Col> */}
               </Row>
 
               <Row>
-                <Col lg='4'>
+                <Col lg='6'>
                   <Stages />
                 </Col>
 
-                <Col lg='4'>
+                {/* <Col lg='4'>
                   <AttachedFiles files={carnivalDetail?.files} />
                 </Col>
 
                 <Col lg='4'>
                   <Comments comments={carnivalDetail?.comments} />
-                </Col>
+                </Col> */}
               </Row>
             </>
           )}
@@ -78,8 +74,8 @@ const ProjectsOverview = props => {
   )
 }
 
-ProjectsOverview.propTypes = {
+CarnivalOverview.propTypes = {
   match: PropTypes.object
 }
 
-export default withRouter(ProjectsOverview)
+export default withRouter(CarnivalOverview)

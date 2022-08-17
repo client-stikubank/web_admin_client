@@ -2,8 +2,10 @@ export const POST_LOGIN = '/admin/login'
 export const POST_LOGOUT = '/users/oauth/revoke'
 
 export const URL_CARNIVALS = '/admin/carnivals'
-
 export const URL_STAGES = './admin/stages'
+export const URL_CAMPS = './admin/camps'
+export const URL_STAGE_CAMPS = './admin/stage_camps'
+export const URL_STAGE_CAMP_SCHEDULES = './admin/stage_camp_schedules'
 
 // ======================
 
