@@ -14,5 +14,8 @@ export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment'
-  }
+  },
+    build: {
+    chunkSizeWarningLimit: 1600,
+  },
 })

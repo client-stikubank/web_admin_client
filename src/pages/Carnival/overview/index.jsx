@@ -44,7 +44,7 @@ const CarnivalOverview = props => {
           {!isEmpty(carnivalDetail) && (
             <>
               <Row>
-                <Col lg='8'>
+                <Col lg='6'>
                   <CarnivalDetail carnival={carnivalDetail} />
                 </Col>
 

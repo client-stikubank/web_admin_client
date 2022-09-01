@@ -9,7 +9,8 @@ import SidebarContent from './SidebarContent'
 
 import { Link } from 'react-router-dom'
 
-import logo from '../../assets/images/logo.svg'
+// import logo from '../../assets/images/logo.svg'
+import logo from '../../assets/images/logo.png'
 import logoLightPng from '../../assets/images/logo-light.png'
 import logoLightSvg from '../../assets/images/logo-light.svg'
 import logoDark from '../../assets/images/logo-dark.png'
@@ -33,11 +34,7 @@ const Sidebar = props => {
               <img src={logoLightSvg} alt='' height='22' />
             </span>
             <span className='logo-lg'>
-              <img
-                src='https://freepikpsd.com/file/2019/10/summer-camp-logo-png-5-Transparent-Images.png'
-                alt=''
-                height='60'
-              />
+              <img src={logo} alt='' height='80' className='rounded mt-3' />
             </span>
           </Link>
         </div>
