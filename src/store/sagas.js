@@ -10,6 +10,7 @@ import CarnivalSaga from './carnival/saga'
 import StageSaga from './stage/saga'
 import CampSaga from './camp/saga'
 import StageCampScheduleSaga from './stage-camp-schedule/saga'
+import Coin from './coin/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     fork(CarnivalSaga),
     fork(StageSaga),
     fork(CampSaga),
-    fork(StageCampScheduleSaga)
+    fork(StageCampScheduleSaga),
+    fork(Coin)
   ])
 }

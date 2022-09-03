@@ -14,6 +14,7 @@ import Carnival from './carnival/reducer'
 import Stage from './stage/reducer'
 import Camp from './camp/reducer'
 import StageCampSchedule from './stage-camp-schedule/reducer'
+import Coin from './coin/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -26,7 +27,8 @@ const rootReducer = combineReducers({
   Carnival,
   Stage,
   Camp,
-  StageCampSchedule
+  StageCampSchedule,
+  Coin
 })
 
 export default rootReducer

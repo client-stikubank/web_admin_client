@@ -11,3 +11,10 @@ export const CAMP_STATUSES = [
   { value: 0, label: 'Tidak Aktif' },
   { value: 1, label: 'Aktif' }
 ]
+
+export const COIN_NAMES = [
+  { value: 0, label: 'Mamo' },
+  { value: 1, label: 'Beryl' },
+  { value: 2, label: 'Ale' },
+  { value: 3, label: 'Jenny' }
+]

@@ -17,8 +17,9 @@ import Dashboard from '../pages/Dashboard/index'
 import Carnival from '../pages/Carnival'
 import CarnivalOverview from '../pages/Carnival/overview'
 
-// Camp
+// Master Data
 import Camp from '../pages/Camp'
+import Coin from '../pages/Coin'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
@@ -31,7 +32,8 @@ const authProtectedRoutes = [
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> },
   { path: '/carnival', component: Carnival },
   { path: '/carnival/:id', component: CarnivalOverview },
-  { path: '/camp', component: Camp }
+  { path: '/camp', component: Camp },
+  { path: '/coin', component: Coin }
 ]
 
 const publicRoutes = [

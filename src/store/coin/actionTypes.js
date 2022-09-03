@@ -1,0 +1,9 @@
+export const GET_COINS = 'GET_COINS'
+export const GET_COINS_SUCCESS = 'GET_COINS_SUCCESS'
+export const GET_COINS_FAIL = 'GET_COINS_FAIL'
+
+export const UPDATE_COIN = 'UPDATE_COIN'
+export const UPDATE_COIN_SUCCESS = 'UPDATE_COIN_SUCCESS'
+export const UPDATE_COIN_FAIL = 'UPDATE_COIN_FAIL'
+
+export const LOADING_COIN = 'LOADING_COIN'
