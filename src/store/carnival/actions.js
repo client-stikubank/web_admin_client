@@ -3,6 +3,8 @@ import {
   GET_CARNIVALS_FAIL,
   GET_CARNIVALS_SUCCESS,
   GET_CARNIVAL_DETAIL,
+  GET_CARNIVAL_DETAIL_FAIL,
+  GET_CARNIVAL_DETAIL_SUCCESS,
   ADD_NEW_CARNIVAL,
   ADD_CARNIVAL_SUCCESS,
   ADD_CARNIVAL_FAIL,
@@ -12,8 +14,9 @@ import {
   DELETE_CARNIVAL,
   DELETE_CARNIVAL_SUCCESS,
   DELETE_CARNIVAL_FAIL,
-  GET_CARNIVAL_DETAIL_FAIL,
-  GET_CARNIVAL_DETAIL_SUCCESS,
+  ACTIVATE_CARNIVAL,
+  ACTIVATE_CARNIVAL_SUCCESS,
+  ACTIVATE_CARNIVAL_FAIL,
   TOGGLE_LOADING
 } from './actionTypes'
 
@@ -90,6 +93,21 @@ export const deleteCarnivalSuccess = carnival => ({
 
 export const deleteCarnivalFail = error => ({
   type: DELETE_CARNIVAL_FAIL,
+  payload: error
+})
+
+export const activateCarnival = carnival => ({
+  type: ACTIVATE_CARNIVAL,
+  payload: carnival
+})
+
+export const activateCarnivalSuccess = carnival => ({
+  type: ACTIVATE_CARNIVAL_SUCCESS,
+  payload: carnival
+})
+
+export const activateCarnivalFail = error => ({
+  type: ACTIVATE_CARNIVAL_FAIL,
   payload: error
 })
 

@@ -28,7 +28,7 @@ export const ModalAddStageCampSchedule = ({ stageCamp, date }) => {
           <br />
           <small>
             {stageCamp.attributes.stage.name} -{' '}
-            {stageCamp.attributes.camp.title}
+            {stageCamp.attributes.camp.data.attributes.title}
           </small>
           <br />
           <small>Menambahkan Jadwal pada Tanggal {idDate(date)}</small>

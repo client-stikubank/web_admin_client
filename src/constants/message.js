@@ -14,3 +14,4 @@ export const RESET_PASSWORD_SUCCESS =
 export const COMMON_ERROR = 'Terjadi kesalahan, silahkan ulangi permintaan'
 
 export const UNCOLLECT_FAIL = 'Gagal melakukan uncollect'
+export const ACTIVATE_DATA_SUCCESS = 'Berhasil diaktifkan'

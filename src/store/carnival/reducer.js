@@ -9,6 +9,8 @@ import {
   UPDATE_CARNIVAL_FAIL,
   DELETE_CARNIVAL_SUCCESS,
   DELETE_CARNIVAL_FAIL,
+  ACTIVATE_CARNIVAL_SUCCESS,
+  ACTIVATE_CARNIVAL_FAIL,
   TOGGLE_LOADING
 } from './actionTypes'
 
@@ -70,15 +72,13 @@ const carnivals = (state = INIT_STATE, action) => {
     case UPDATE_CARNIVAL_SUCCESS:
       return {
         ...state,
-        carnivals: {
-          data: state.carnivals.map(carnival =>
-            carnival.id.toString() === action.payload.id.toString()
-              ? { carnival, ...action.payload }
-              : carnival
-          ),
-          pagination: state.carnivals.pagination
-        },
-        carnivalDetail: action.payload
+        carnivalDetail: {
+          ...state.carnivalDetail,
+          attributes: {
+            ...state.carnivalDetail.attributes,
+            ...action.payload.data.attributes
+          }
+        }
       }
 
     case UPDATE_CARNIVAL_FAIL:
@@ -99,6 +99,24 @@ const carnivals = (state = INIT_STATE, action) => {
       }
 
     case DELETE_CARNIVAL_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      }
+
+    case ACTIVATE_CARNIVAL_SUCCESS:
+      return {
+        ...state,
+        carnivalDetail: {
+          ...state.carnivalDetail,
+          attributes: {
+            ...state.carnivalDetail.attributes,
+            ...action.payload.data.attributes
+          }
+        }
+      }
+
+    case ACTIVATE_CARNIVAL_FAIL:
       return {
         ...state,
         error: action.payload

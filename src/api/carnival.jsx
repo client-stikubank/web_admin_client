@@ -28,7 +28,7 @@ export const addNewCarnival = data => {
 }
 
 export const updateCarnival = data => {
-  return put(url.URL_CARNIVALS, data, {
+  return put(`${url.URL_CARNIVALS}/${data.carnival.id}`, data, {
     headers: {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }
@@ -41,4 +41,16 @@ export const deleteCarnival = id => {
       Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
     }
   })
+}
+
+export const activateCarnival = carnival => {
+  return post(
+    `${url.URL_CARNIVALS}/${carnival.id}/activate`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${storage.CURRENT_USER?.access_token}`
+      }
+    }
+  )
 }

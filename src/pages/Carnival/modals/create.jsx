@@ -20,7 +20,7 @@ export const ModalCreate = () => {
     <Modal isOpen={type === 'createCarnival' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Membuat Karnaval
+          Membuat Youthcamp
         </h5>
         <button
           type='button'

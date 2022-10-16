@@ -32,7 +32,7 @@ const CardProject = ({ carnivals }) => {
                 <div className='flex-grow-1 overflow-hidden'>
                   <h5 className='text-truncate font-size-15'>
                     <Link
-                      to={`/carnival/${carnival?.id}`}
+                      to={`/youthcamp/${carnival?.id}`}
                       className='text-dark'
                     >
                       {carnival?.attributes.name}

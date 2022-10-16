@@ -23,7 +23,7 @@ import CarnivalCard from './card'
 import { ModalCreate } from './modals'
 
 const Carnival = props => {
-  document.title = 'Karnaval | Admin YouthCamp'
+  document.title = 'Youthcamp | Admin YouthCamp'
   const [page, setPage] = useState(1)
   const dispatch = useDispatch()
 
@@ -72,7 +72,7 @@ const Carnival = props => {
       <div className='page-content'>
         <Container fluid>
           <div className='d-flex justify-content-between align-items-center mb-3'>
-            <h4>Karnaval</h4>
+            <h4>Youthcamp</h4>
             <div className='d-flex align-items-center'>
               <Button
                 type='button'
@@ -83,7 +83,7 @@ const Carnival = props => {
                 }
               >
                 <i className='mdi mdi-plus me-1' />
-                Tambah Karnaval
+                Tambah Youthcamp
               </Button>
             </div>
           </div>

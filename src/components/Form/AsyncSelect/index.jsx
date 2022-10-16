@@ -21,7 +21,7 @@ export const AsyncSelectField = React.forwardRef((props, ref) => {
         value: data.id,
         label: props.renderOptions
           ? props.renderOptions(data)
-          : data[`${props.label}`]
+          : data['attributes'][`${props.label}`]
       })),
       hasMore: response.pagination.next_page > 1,
       additional: {

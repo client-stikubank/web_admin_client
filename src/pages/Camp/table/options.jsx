@@ -1,5 +1,8 @@
 import _ from 'lodash'
 import { Badge } from 'reactstrap'
+import { monsta } from '@/helpers/render/text'
+import { BACKEND_API_URL } from '@/helpers/environment'
+import imagePlaceholder from '@/assets/images/mamo.webp'
 
 export const columns = [
   {
@@ -9,16 +12,39 @@ export const columns = [
     formatter: (cell, row) => row.attributes.title
   },
   {
-    dataField: 'description',
-    text: 'Deskripsi',
-    sort: true,
-    formatter: (cell, row) => row.attributes.description
-  },
-  {
     dataField: 'level',
     text: 'Level',
     sort: true,
     formatter: (cell, row) => row.attributes.level
+  },
+  {
+    dataField: 'speaker',
+    text: 'Speaker',
+    sort: true,
+    formatter: (cell, row) => {
+      const { attributes } = row.attributes.speaker.data
+      return (
+        <div className='d-flex align-items-center'>
+          <img
+            src={
+              attributes.user_profile.data.attributes?.image.url
+                ? BACKEND_API_URL +
+                  attributes.user_profile.data.attributes?.image.url
+                : imagePlaceholder
+            }
+            alt=''
+            className='avatar-sm rounded-circle img-thumbnail me-2'
+          />
+          <span>{attributes.email}</span>
+        </div>
+      )
+    }
+  },
+  {
+    dataField: 'reward_amount',
+    text: 'Reward MONSTA',
+    sort: true,
+    formatter: (cell, row) => monsta(row.attributes?.reward_amount)
   },
   {
     dataField: 'status',

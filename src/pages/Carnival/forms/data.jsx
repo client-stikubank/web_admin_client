@@ -22,7 +22,7 @@ import { toDate, toFormattedDate, todayFormat } from '@/helpers/format/date'
 const FormData = ({ currentData }) => {
   const dispatch = useDispatch()
   const [confirmation, setConfirmation] = useState()
-
+  console.log(currentData)
   const {
     control,
     register,
@@ -32,9 +32,10 @@ const FormData = ({ currentData }) => {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      name: currentData?.name,
-      finished_at: currentData?.finished_at
-        ? toDate(currentData?.finished_at)
+      name: currentData?.attributes?.name,
+      description: currentData?.attributes?.description,
+      finished_at: currentData?.attributes?.finished_at
+        ? toDate(currentData?.attributes?.finished_at)
         : null
     }
   })
@@ -52,7 +53,7 @@ const FormData = ({ currentData }) => {
 
   const submitWithConfirmation = () => {
     const submitDispatch = currentData
-      ? updateCarnival({ carnival: confirmation, history })
+      ? updateCarnival({ carnival: confirmation })
       : addNewCarnival({ carnival: confirmation })
     dispatch(submitDispatch)
     setConfirmation()

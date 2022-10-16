@@ -3,8 +3,9 @@ import {
   GET_CARNIVALS,
   GET_CARNIVAL_DETAIL,
   ADD_NEW_CARNIVAL,
+  UPDATE_CARNIVAL,
   DELETE_CARNIVAL,
-  UPDATE_CARNIVAL
+  ACTIVATE_CARNIVAL
 } from './actionTypes'
 
 import {
@@ -18,7 +19,10 @@ import {
   updateCarnivalFail,
   deleteCarnivalSuccess,
   deleteCarnivalFail,
-  toggleLoading
+  activateCarnivalSuccess,
+  activateCarnivalFail,
+  toggleLoading,
+  closeModal
 } from '../actions'
 
 import {
@@ -26,7 +30,8 @@ import {
   getCarnivalsDetails,
   addNewCarnival,
   updateCarnival,
-  deleteCarnival
+  deleteCarnival,
+  activateCarnival
 } from '@/api/carnival'
 
 import toast from '@/helpers/toast'
@@ -81,6 +86,7 @@ function* onUpdateCarnival({ payload: carnival }) {
   try {
     const response = yield call(updateCarnival, carnival)
     yield put(updateCarnivalSuccess(response))
+    yield put(closeModal())
     toast(message.UPDATE_DATA_SUCCESS, 'success')
   } catch (error) {
     yield put(updateCarnivalFail(error))
@@ -110,12 +116,31 @@ function* onDeleteCarnival({ payload: carnival }) {
   yield put(toggleLoading(true))
 }
 
+function* onActivateCarnival({ payload: carnival }) {
+  yield put(toggleLoading(true))
+  try {
+    const response = yield call(activateCarnival, carnival)
+    yield put(activateCarnivalSuccess(response))
+    yield put(closeModal())
+    toast(message.ACTIVATE_DATA_SUCCESS, 'success')
+  } catch (error) {
+    yield put(activateCarnivalFail(error))
+    let errorMessage = error.response?.data.message
+    errorMessage = errorMessage?.generic_errors
+      ? errorMessage.generic_errors[0]
+      : errorMessage
+    toast(errorMessage || message.DELETE_DATA_FAIL, 'error')
+  }
+  yield put(toggleLoading(true))
+}
+
 function* carnivalsSaga() {
   yield takeEvery(GET_CARNIVALS, fetchCarnivals)
   yield takeEvery(GET_CARNIVAL_DETAIL, fetchCarnivalDetail)
   yield takeEvery(ADD_NEW_CARNIVAL, onAddNewCarnival)
   yield takeEvery(UPDATE_CARNIVAL, onUpdateCarnival)
   yield takeEvery(DELETE_CARNIVAL, onDeleteCarnival)
+  yield takeEvery(ACTIVATE_CARNIVAL, onActivateCarnival)
 }
 
 export default carnivalsSaga

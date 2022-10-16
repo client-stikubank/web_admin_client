@@ -100,9 +100,16 @@ const SidebarContent = props => {
             </li>
 
             <li>
-              <Link to='/carnival'>
+              <Link to='/youthcamp'>
                 <i className='bx bx-right-arrow'></i>
                 <span>{props.t('Carnival')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/stock'>
+                <i className='bx bx-wallet-alt'></i>
+                <span>{props.t('Stock')}</span>
               </Link>
             </li>
 
@@ -119,6 +126,20 @@ const SidebarContent = props => {
               <Link to='/camp'>
                 <i className='bx bx-book'></i>
                 <span>{props.t('Camp')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/user'>
+                <i className='bx bx-group'></i>
+                <span>{props.t('User')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/role'>
+                <i className='bx bx-accessibility'></i>
+                <span>{props.t('Role')}</span>
               </Link>
             </li>
 

@@ -9,15 +9,22 @@ import PropTypes from 'prop-types'
 import {
   LoadingButton,
   InputField,
+  AsyncSelectField,
   SelectField,
   Confirmation
 } from '@/components/Form'
+
+// API
+import { getUsers } from '@/api/user'
 
 // Actions
 import { addNewCamp, updateCamp, closeModal } from '@/store/actions'
 
 // Constants
 import { LEVELS, CAMP_STATUSES } from '@/constants/select-options'
+
+// Helpers
+import { speakerOptions } from '@/helpers/render/options'
 
 const FormData = ({ currentData }) => {
   const dispatch = useDispatch()
@@ -36,9 +43,14 @@ const FormData = ({ currentData }) => {
       level: _.find(LEVELS, {
         value: parseInt(currentData?.attributes.level || 1)
       }),
+      reward_amount: currentData?.attributes.reward_amount?.join(''),
       status: _.find(CAMP_STATUSES, {
         value: parseInt(currentData?.attributes['active?'] ? 1 : 0)
-      })
+      }),
+      speaker_id: currentData && {
+        value: currentData?.attributes.speaker?.data.id,
+        label: speakerOptions(currentData?.attributes.speaker?.data)
+      }
     }
   })
 
@@ -49,6 +61,8 @@ const FormData = ({ currentData }) => {
   const onSubmit = data => {
     data.level = data.level.value
     data.status = data.status.value
+    data.speaker_id = data.speaker_id.value
+    data.reward_amount = data.reward_amount.split('').map(Number)
 
     setConfirmation(data)
   }
@@ -113,6 +127,50 @@ const FormData = ({ currentData }) => {
           />
           <span className='text-danger invalid-feedback'>
             Tidak boleh kosong!
+          </span>
+        </div>
+
+        <div className='mb-2'>
+          <Label>Speaker</Label>
+          <Controller
+            name='speaker_id'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <AsyncSelectField
+                api={getUsers}
+                defaultParams={{
+                  roles_name_eq: 'speaker'
+                }}
+                query='email_or_user_profile_first_name_or_user_profile_last_name_cont'
+                placeholder='Pilih Speaker'
+                renderOptions={speakerOptions}
+                height={50}
+                className={errors.speaker_id && 'is-invalid'}
+                {...field}
+              />
+            )}
+          />
+          <span className='text-danger invalid-feedback'>
+            Tidak boleh kosong!
+          </span>
+        </div>
+
+        <div className='mb-2'>
+          <Label>Reward MONSTA</Label>
+          <InputField
+            type='number'
+            className={`form-control ${errors.reward_amount && 'is-invalid'}`}
+            {...register('reward_amount', {
+              required: true,
+              maxLength: 4,
+              minLength: 4
+            })}
+          />
+          <span className='text-danger invalid-feedback'>
+            {errors.reward_amount?.type === 'required' && 'Tidak boleh kosong!'}
+            {['maxLength', 'minLength'].includes(errors.reward_amount?.type) &&
+              'Harus 4 angka!'}
           </span>
         </div>
 

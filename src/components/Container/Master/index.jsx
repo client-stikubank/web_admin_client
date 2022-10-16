@@ -6,10 +6,10 @@ import PropTypes from 'prop-types'
 
 const Master = props => {
   return (
-    <Container fluid>
+    <Container fluid className={props.shared && 'p-0'}>
       <Card className='w-100 card-content page-card-content single-table'>
         <CardTitle className='px-3 pt-3 m-0 d-flex justify-content-between align-items-center'>
-          <h2>{props.title}</h2>
+          {props.shared ? <div>{props.title}</div> : <h2>{props.title}</h2>}
           <div className='d-flex flex-wrap gap-2 justify-content-end'>
             {props.filter}
             {props.actions}

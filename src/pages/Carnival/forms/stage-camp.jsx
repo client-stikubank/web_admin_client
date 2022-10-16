@@ -79,7 +79,7 @@ const FormStageCamp = ({ currentData }) => {
                   level_eq: currentData?.attributes.level,
                   id_not_in: _.map(
                     currentData?.attributes.stage_camps.data,
-                    'attributes.camp.id'
+                    'attributes.camp.data.id'
                   )
                 }}
                 query='title_cont'

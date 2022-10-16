@@ -17,23 +17,31 @@ import Dashboard from '../pages/Dashboard/index'
 import Carnival from '../pages/Carnival'
 import CarnivalOverview from '../pages/Carnival/overview'
 
+// Stock
+import Stock from '../pages/Stock'
+
 // Master Data
 import Camp from '../pages/Camp'
 import Coin from '../pages/Coin'
+import User from '../pages/User'
+import Role from '../pages/Role'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
 
-  // //profile
+  // profile
   { path: '/profile', component: UserProfile },
 
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
   { path: '/', exact: true, component: () => <Redirect to='/dashboard' /> },
-  { path: '/carnival', component: Carnival },
-  { path: '/carnival/:id', component: CarnivalOverview },
+  { path: '/youthcamp', component: Carnival },
+  { path: '/youthcamp/:id', component: CarnivalOverview },
+  { path: '/stock', component: Stock },
   { path: '/camp', component: Camp },
-  { path: '/coin', component: Coin }
+  { path: '/coin', component: Coin },
+  { path: '/user', component: User },
+  { path: '/role', component: Role }
 ]
 
 const publicRoutes = [

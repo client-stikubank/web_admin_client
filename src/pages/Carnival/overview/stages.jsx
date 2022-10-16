@@ -131,7 +131,10 @@ const Stages = () => {
                                   >
                                     <CardHeader className='p-2 d-flex justify-content-between text-center'>
                                       <h6 className='mb-0'>
-                                        {stage_camp.attributes.camp.title}
+                                        {
+                                          stage_camp.attributes.camp.data
+                                            .attributes.title
+                                        }
                                       </h6>
                                       <div className='d-flex gap-2'>
                                         <span

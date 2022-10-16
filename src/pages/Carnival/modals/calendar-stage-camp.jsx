@@ -67,7 +67,7 @@ export const ModalCalendarCampStage = ({
           <br />
           <small>
             {stageCamp.attributes.stage.name} -{' '}
-            {stageCamp.attributes.camp.title}
+            {stageCamp.attributes.camp.data.attributes.title}
           </small>
         </h5>
         <button

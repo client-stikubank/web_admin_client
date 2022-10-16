@@ -31,18 +31,18 @@ export async function get(url, config = {}) {
 }
 
 export async function post(url, data, config = {}) {
-  return axiosApi
+  return await axiosApi
     .post(url, { ...data }, { ...config })
     .then(response => response.data)
 }
 
-export async function postFormData(url, data, headers = {}) {
-  const config = { method: 'POST', url, data, headers }
-  return await axiosApi(config)
+export async function postFormData(url, data, headers = {}, method = 'POST') {
+  const config = { method: method, url, data, headers }
+  return await axiosApi(config).then(response => response.data)
 }
 
 export async function put(url, data, config = {}) {
-  return axiosApi
+  return await axiosApi
     .put(url, { ...data }, { ...config })
     .then(response => response.data)
 }

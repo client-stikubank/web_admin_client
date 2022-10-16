@@ -7,6 +7,11 @@ export const URL_CAMPS = './admin/camps'
 export const URL_STAGE_CAMPS = './admin/stage_camps'
 export const URL_STAGE_CAMP_SCHEDULES = './admin/stage_camp_schedules'
 export const URL_COINS = './admin/coins'
+export const URL_STOCKS = './admin/stocks'
+export const URL_TRANSACTIONS = './admin/transactions'
+export const URL_USERS = './admin/users'
+export const URL_USER_STAGE_SCHEDULES = './admin/user_stage_schedules'
+export const URL_ROLES = './admin/roles'
 
 // ======================
 

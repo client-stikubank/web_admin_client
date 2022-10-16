@@ -5,7 +5,7 @@ export const EditableText = props => {
   const confirmElement = (
     <button
       type='submit'
-      className='btn btn-success editable-submit btn-sm me-1'
+      className='btn btn-success editable-submit btn-sm me-1 ms-2'
     >
       <i className='mdi mdi-check'></i>
     </button>

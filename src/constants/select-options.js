@@ -1,3 +1,9 @@
+export const ROLES = [
+  { value: 'admin', label: 'Admin' },
+  { value: 'operator', label: 'Operator' },
+  { value: 'speaker', label: 'Speaker' }
+]
+
 export const LEVELS = [
   { value: 1, label: 1 },
   { value: 2, label: 2 },
