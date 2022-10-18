@@ -49,7 +49,8 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
       time_end: currentData
         ? [formatTime(currentData?.attributes.time_end)]
         : '00:00',
-      quota: currentData?.attributes.quota
+      quota: currentData?.attributes.quota,
+      link: currentData?.attributes.link
     }
   })
 
@@ -179,6 +180,17 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
           />
           <span className='text-danger invalid-feedback'>
             {errors.quota?.type === 'required' && 'Tidak boleh kosong!'}
+          </span>
+        </div>
+
+        <div className='mb-2'>
+          <Label>Link Pelatihan (Zoom, Google Meet, Ms. Teams)</Label>
+          <InputField
+            className={`form-control ${errors.link && 'is-invalid'}`}
+            {...register('link', { required: true })}
+          />
+          <span className='text-danger invalid-feedback'>
+            {errors.link?.type === 'required' && 'Tidak boleh kosong!'}
           </span>
         </div>
       </div>
