@@ -15,6 +15,7 @@ import StockSaga from './stock/saga'
 import UserSaga from './user/saga'
 import UserStageScheduleSaga from './user-stage-schedule/saga'
 import RoleSaga from './role/saga'
+import RewardSaga from './reward/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -31,6 +32,7 @@ export default function* rootSaga() {
     fork(StockSaga),
     fork(UserSaga),
     fork(UserStageScheduleSaga),
-    fork(RoleSaga)
+    fork(RoleSaga),
+    fork(RewardSaga)
   ])
 }

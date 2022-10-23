@@ -16,7 +16,7 @@ export const columns = [
   },
   {
     dataField: 'max_supply',
-    text: 'Pasokan/Suplay',
+    text: 'Pasokan/Supply',
     sort: true,
     formatter: (cell, row) => row.attributes.max_supply
   }

@@ -15,3 +15,4 @@ export const COMMON_ERROR = 'Terjadi kesalahan, silahkan ulangi permintaan'
 
 export const UNCOLLECT_FAIL = 'Gagal melakukan uncollect'
 export const ACTIVATE_DATA_SUCCESS = 'Berhasil diaktifkan'
+export const TRANSACTION_PROCESSED = 'Transaksi diproses'

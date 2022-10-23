@@ -19,6 +19,7 @@ import Stock from './stock/reducer'
 import User from './user/reducer'
 import UserStageSchedule from './user-stage-schedule/reducer'
 import Role from './role/reducer'
+import Reward from './reward/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -36,7 +37,8 @@ const rootReducer = combineReducers({
   Stock,
   User,
   UserStageSchedule,
-  Role
+  Role,
+  Reward
 })
 
 export default rootReducer

@@ -15,8 +15,8 @@ export const columns = [
         switch (row.attributes.status) {
           case 'pending':
             return { class: 'warning', text: 'Pending' }
-          case 'running':
-            return { class: 'info', text: 'Sedang Berlangsung' }
+          case 'confirmed':
+            return { class: 'info', text: 'Hadir' }
           case 'finish':
             return { class: 'success', text: 'Selesai' }
           case 'rejected':
@@ -63,8 +63,13 @@ export const columns = [
           <i className='bx bx-calendar me-1' />
           {fullDate(schedule.started_at)}
           <br />
-          <i className='bx bx-time me-1' />
-          {schedule.time_start} - {schedule.time_end}
+          <p>
+            <i className='bx bx-time me-1' />
+            {schedule.time_start} - {schedule.time_end}
+          </p>
+          <Badge className={`font-size-14 badge-soft-info`} color={'red'}>
+            {_.upperCase(schedule.status)}
+          </Badge>
         </>
       )
     }

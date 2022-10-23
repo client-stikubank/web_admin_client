@@ -25,6 +25,7 @@ import Camp from '../pages/Camp'
 import Coin from '../pages/Coin'
 import User from '../pages/User'
 import Role from '../pages/Role'
+import Reward from '../pages/Reward'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
@@ -41,7 +42,8 @@ const authProtectedRoutes = [
   { path: '/camp', component: Camp },
   { path: '/coin', component: Coin },
   { path: '/user', component: User },
-  { path: '/role', component: Role }
+  { path: '/role', component: Role },
+  { path: '/reward', component: Reward }
 ]
 
 const publicRoutes = [
