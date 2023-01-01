@@ -26,6 +26,10 @@ import Coin from '../pages/Coin'
 import User from '../pages/User'
 import Role from '../pages/Role'
 import Reward from '../pages/Reward'
+import Gift from '../pages/Gift'
+import AssessmentQuestion from '../pages/AssessmentQuestion'
+import Personality from '../pages/Personality'
+import Assessment from '../pages/Assessment'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
@@ -43,7 +47,11 @@ const authProtectedRoutes = [
   { path: '/coin', component: Coin },
   { path: '/user', component: User },
   { path: '/role', component: Role },
-  { path: '/reward', component: Reward }
+  { path: '/reward', component: Reward },
+  { path: '/gift', component: Gift },
+  { path: '/personality', component: Personality },
+  { path: '/assessment-question', component: AssessmentQuestion },
+  { path: '/assessment', component: Assessment }
 ]
 
 const publicRoutes = [

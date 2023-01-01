@@ -16,6 +16,11 @@ import UserSaga from './user/saga'
 import UserStageScheduleSaga from './user-stage-schedule/saga'
 import RoleSaga from './role/saga'
 import RewardSaga from './reward/saga'
+import GiftSaga from './gift/saga'
+import CarnivalGiftSaga from './carnival-gift/saga'
+import AssessmentQuestionSaga from './assessment-question/saga'
+import PersonalitySaga from './personality/saga'
+import AssessmentSaga from './assessment/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -33,6 +38,11 @@ export default function* rootSaga() {
     fork(UserSaga),
     fork(UserStageScheduleSaga),
     fork(RoleSaga),
-    fork(RewardSaga)
+    fork(RewardSaga),
+    fork(GiftSaga),
+    fork(CarnivalGiftSaga),
+    fork(AssessmentQuestionSaga),
+    fork(PersonalitySaga),
+    fork(AssessmentSaga)
   ])
 }

@@ -21,7 +21,7 @@ export const ModalEdit = ({ data }) => {
     <Modal isOpen={type === 'editCamp' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Mengedit Pelatihan
+          Update Pelatihan
         </h5>
         <button
           type='button'

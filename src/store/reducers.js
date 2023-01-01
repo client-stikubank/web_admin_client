@@ -20,6 +20,11 @@ import User from './user/reducer'
 import UserStageSchedule from './user-stage-schedule/reducer'
 import Role from './role/reducer'
 import Reward from './reward/reducer'
+import Gift from './gift/reducer'
+import CarnivalGift from './carnival-gift/reducer'
+import AssessmentQuestion from './assessment-question/reducer'
+import Personality from './personality/reducer'
+import Assessment from './assessment/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -38,7 +43,12 @@ const rootReducer = combineReducers({
   User,
   UserStageSchedule,
   Role,
-  Reward
+  Reward,
+  Gift,
+  CarnivalGift,
+  AssessmentQuestion,
+  Personality,
+  Assessment
 })
 
 export default rootReducer

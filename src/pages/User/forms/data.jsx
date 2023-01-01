@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm, Controller } from 'react-hook-form'
 import { Form, Label, Row, Col } from 'reactstrap'
@@ -60,7 +60,11 @@ const FormData = ({ currentData }) => {
   }))
 
   const onSubmit = data => {
-    data.user_profile_attributes.image = data.user_profile_attributes.image[0]
+    if (data.user_profile_attributes.image.length > 0) {
+      data.user_profile_attributes.image = data.user_profile_attributes.image[0]
+    } else {
+      delete data.user_profile_attributes.image
+    }
     data.user_profile_attributes.birth_date = toFormattedDate(
       _.isArray(data.user_profile_attributes.birth_date)
         ? data.user_profile_attributes.birth_date[0]
@@ -70,7 +74,6 @@ const FormData = ({ currentData }) => {
       role_types: [data.role?.value]
     }
     delete data.role
-    console.log(data)
     setConfirmation({ ...data, ...roleTypes })
   }
 
@@ -90,11 +93,18 @@ const FormData = ({ currentData }) => {
         cancel={() => setConfirmation()}
       />
       {currentData && (
-        <input
-          type='hidden'
-          value={currentData?.id}
-          {...register('id', { required: true })}
-        />
+        <Fragment>
+          <input
+            type='hidden'
+            value={currentData?.id}
+            {...register('id', { required: true })}
+          />
+          <input
+            type='hidden'
+            value={currentData?.attributes?.user_profile?.data?.id}
+            {...register('user_profile_attributes.id', { required: true })}
+          />
+        </Fragment>
       )}
       <div className='modal-body'>
         <div className='mb-2'>
@@ -210,9 +220,9 @@ const FormData = ({ currentData }) => {
             <a
               href={`${BACKEND_API_URL}${currentData?.attributes?.user_profile?.data?.attributes?.image.url}`}
               target='_blank'
-              className='d-block mt-1'
+              className='d-block mt-2'
             >
-              Foto saat ini
+              Klik untuk lihat foto sebelumnya
             </a>
           )}
         </div>

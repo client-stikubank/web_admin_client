@@ -7,3 +7,6 @@ export * from './calendar-stage-camp'
 export * from './add-stage-camp-schedule'
 export * from './edit-stage-camp-schedule'
 export * from './delete-stage-camp-schedule'
+
+export * from './add-carnival-gift'
+export * from './edit-carnival-gift'

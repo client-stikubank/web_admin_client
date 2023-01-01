@@ -21,7 +21,7 @@ export const ModalEdit = ({ data }) => {
     <Modal isOpen={type === 'editRole' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Mengedit Role
+          Update Role
         </h5>
         <button
           type='button'

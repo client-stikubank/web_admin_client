@@ -120,6 +120,13 @@ const SidebarContent = props => {
               </Link>
             </li>
 
+            <li>
+              <Link to='/assessment'>
+                <i className='bx bxs-pie-chart'></i>
+                <span>{props.t('Assessment')}</span>
+              </Link>
+            </li>
+
             <li className='menu-title'>{props.t('Master Data')}</li>
 
             <li>
@@ -133,6 +140,27 @@ const SidebarContent = props => {
               <Link to='/camp'>
                 <i className='bx bx-book'></i>
                 <span>{props.t('Camp')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/assessment-question'>
+                <i className='bx bx-message-rounded-dots'></i>
+                <span>{props.t('AssessmentQuestion')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/gift'>
+                <i className='bx bx-gift'></i>
+                <span>{props.t('Gift')}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to='/personality'>
+                <i className='bx bxs-color'></i>
+                <span>{props.t('Personality')}</span>
               </Link>
             </li>
 

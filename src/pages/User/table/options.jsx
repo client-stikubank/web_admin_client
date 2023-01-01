@@ -1,5 +1,4 @@
 import _ from 'lodash'
-import { BACKEND_API_URL } from '@/helpers/environment'
 import imagePlaceholder from '@/assets/images/mamo.webp'
 
 export const columns = [
@@ -11,10 +10,8 @@ export const columns = [
       <div className='d-flex align-items-center'>
         <img
           src={
-            row.attributes.user_profile.data.attributes?.image.url
-              ? BACKEND_API_URL +
-                row.attributes.user_profile.data.attributes?.image.url
-              : imagePlaceholder
+            row.attributes.user_profile.data.attributes?.image?.url ||
+            imagePlaceholder
           }
           alt=''
           className='avatar-sm rounded-circle img-thumbnail me-2'

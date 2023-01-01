@@ -8,7 +8,7 @@ import { getUserStageSchedules } from '@/store/actions'
 // Pages
 import UserStageSchedule from '@/pages/UserStageSchedule'
 
-const TeamMembers = ({ carnivalId }) => {
+const usersList = ({ carnivalId }) => {
   const dispatch = useDispatch()
 
   const fetchSchedules = params => {
@@ -31,8 +31,8 @@ const TeamMembers = ({ carnivalId }) => {
   )
 }
 
-TeamMembers.propTypes = {
+usersList.propTypes = {
   carnivalId: PropTypes.array
 }
 
-export default TeamMembers
+export default usersList

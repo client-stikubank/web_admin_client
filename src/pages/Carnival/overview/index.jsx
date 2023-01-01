@@ -9,9 +9,10 @@ import { Col, Container, Row, Button } from 'reactstrap'
 import { getCarnivalDetail, setModal } from '@/store/actions'
 
 import CarnivalDetail from './carnivalDetail'
-import TeamMembers from './teamMembers'
+import TeamMembers from './usersList'
 import Stages from './stages'
-import AttachedFiles from './attachedFiles'
+import Gifts from './gifts'
+// import AttachedFiles from './attachedFiles'
 import Comments from './comments'
 import { ModalActivate } from '../modals'
 
@@ -67,6 +68,7 @@ const CarnivalOverview = props => {
                 <Col lg='6'>
                   <CarnivalDetail carnival={carnivalDetail} />
                   <Stages />
+                  <Gifts />
                 </Col>
 
                 <Col lg='6'>
@@ -78,10 +80,10 @@ const CarnivalOverview = props => {
                 <Col lg='6'></Col>
 
                 {/* <Col lg='4'>
-                  <AttachedFiles files={carnivalDetail?.files} />
-                </Col>
+                  <AttachedFiles files={[]} />
+                </Col> */}
 
-                <Col lg='4'>
+                {/* <Col lg='4'>
                   <Comments comments={carnivalDetail?.comments} />
                 </Col> */}
               </Row>

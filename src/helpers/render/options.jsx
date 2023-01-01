@@ -31,3 +31,23 @@ export const speakerOptions = data => {
     />
   )
 }
+
+export const giftOptions = data => {
+  return (
+    <span
+      dangerouslySetInnerHTML={{
+        __html: `
+        <div style='display: flex;'>
+          <img src=${
+            data.attributes.image.url
+          } width='40' style='margin-right: 16px' />
+          <div>
+            <b>${data.attributes.name || ''}</b><br />
+            Reward: ${data.attributes.reward_amount.join('')}
+          </div>
+        </div>
+      `
+      }}
+    />
+  )
+}
