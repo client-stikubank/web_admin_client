@@ -21,7 +21,7 @@ export const ModalEditCarnivalGift = ({ gifts, carnivalGift }) => {
     <Modal isOpen={type === 'editCarnivalGift' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Update Hadiah
+          Update Kado - {carnivalGift.attributes.gift.name}
         </h5>
         <button
           type='button'

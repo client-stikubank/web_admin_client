@@ -21,7 +21,7 @@ export const ModalEdit = ({ data }) => {
     <Modal isOpen={type === 'editGift' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Update Hadiah
+          Update Kado
         </h5>
         <button
           type='button'

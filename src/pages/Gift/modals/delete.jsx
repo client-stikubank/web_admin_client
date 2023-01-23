@@ -18,7 +18,7 @@ export const ModalDelete = ({ data }) => {
     <Modal isOpen={type === 'deleteGift' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Menghapus Hadiah
+          Menghapus Kado
         </h5>
         <button
           type='button'

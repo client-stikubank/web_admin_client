@@ -53,10 +53,16 @@ export const columns = [
               </td>
             </tr>
             <tr align='center'>
-              <td style={{ padding: '4px 8px' }}>{results['introvert']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['extrovert']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['intuition']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['sensing']}</td>
+              <td style={{ padding: '4px 8px' }}>
+                {results['introvert'] || 0}
+              </td>
+              <td style={{ padding: '4px 8px' }}>
+                {results['extrovert'] || 0}
+              </td>
+              <td style={{ padding: '4px 8px' }}>
+                {results['intuition'] || 0}
+              </td>
+              <td style={{ padding: '4px 8px' }}>{results['sensing'] || 0}</td>
             </tr>
             <tr align='center'>
               <td style={{ padding: '4px 8px' }}>
@@ -73,10 +79,12 @@ export const columns = [
               </td>
             </tr>
             <tr align='center'>
-              <td style={{ padding: '4px 8px' }}>{results['thinking']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['feeling']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['perceiving']}</td>
-              <td style={{ padding: '4px 8px' }}>{results['judging']}</td>
+              <td style={{ padding: '4px 8px' }}>{results['thinking'] || 0}</td>
+              <td style={{ padding: '4px 8px' }}>{results['feeling'] || 0}</td>
+              <td style={{ padding: '4px 8px' }}>
+                {results['perceiving'] || 0}
+              </td>
+              <td style={{ padding: '4px 8px' }}>{results['judging'] || 0}</td>
             </tr>
           </table>
         </div>

@@ -108,7 +108,7 @@ const Assessment = () => {
         <PaginationProvider pagination={paginationFactory(paginationOptions)}>
           {({ paginationProps, paginationTableProps }) => (
             <MasterContainer
-              title='Assessment'
+              title='Tes Kepribadian'
               actions={
                 <Actions
                   selectedRow={selectedRow}

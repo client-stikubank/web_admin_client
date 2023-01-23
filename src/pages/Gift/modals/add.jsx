@@ -20,7 +20,7 @@ export const ModalAdd = () => {
     <Modal isOpen={type === 'addGift' && show} backdrop={'static'}>
       <div className='modal-header'>
         <h5 className='modal-title' id='staticBackdropLabel'>
-          Menambahkan Hadiah
+          Menambahkan Kado
         </h5>
         <button
           type='button'

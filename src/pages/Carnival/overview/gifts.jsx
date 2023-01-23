@@ -76,7 +76,7 @@ const Gifts = () => {
   return (
     <Card>
       <CardBody>
-        <CardTitle className='mb-4'>Daftar Hadiah</CardTitle>
+        <CardTitle className='mb-4'>Daftar Kado</CardTitle>
         <div className='d-flex'>
           <div className='flex-grow-1'>
             <Row>
@@ -157,7 +157,7 @@ const Gifts = () => {
                 >
                   <CardBody className='d-flex flex-column align-items-center justify-content-center'>
                     <i className='bx bx-plus h1 m-0' />
-                    Tambah Hadiah
+                    Tambah Kado
                   </CardBody>
                 </Card>
               </Col>

@@ -25,7 +25,7 @@ import Filter from './table/filter'
 import { ModalAdd, ModalEdit, ModalDelete } from './modals'
 
 const Gift = () => {
-  document.title = 'Master Data Hadiah | Admin YouthCamp'
+  document.title = 'Master Data Kado | Admin YouthCamp'
   const dispatch = useDispatch()
   const [page, setPage] = useState(1)
   const [sizePerPage, setSizePerPage] = useState(SIZE_PER_LIST[0].value)
@@ -121,7 +121,7 @@ const Gift = () => {
         <PaginationProvider pagination={paginationFactory(paginationOptions)}>
           {({ paginationProps, paginationTableProps }) => (
             <MasterContainer
-              title='Master Data — Hadiah'
+              title='Master Data — Kado'
               actions={
                 <Actions
                   selectedRow={selectedRow}
