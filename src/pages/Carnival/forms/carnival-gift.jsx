@@ -158,32 +158,35 @@ const FormCarnivalGift = ({ gifts, currentData }) => {
             Tidak boleh kosong!
           </span>
         </div>
-        <QRCode
-          value={currentData?.id}
-          logoImage={qrIcon}
-          logoWidth={300}
-          logoOpacity={0.2}
-          qrStyle='dots'
-          bgColor='#FFC40C'
-          fgColor='#EE157F'
-          quietZone={20}
-          size={300}
-          eyeColor={['#EE157F', '#96519B', '#2EB4AC']}
-          eyeRadius={[
-            {
-              outer: [16, 16, 0, 16],
-              inner: [1, 1, 1, 1]
-            },
-            {
-              outer: [16, 16, 16, 0],
-              inner: [1, 1, 1, 1]
-            },
-            {
-              outer: [16, 0, 16, 16],
-              inner: [1, 1, 1, 1]
-            }
-          ]}
-        />
+
+        {currentData?.id && (
+          <QRCode
+            value={currentData?.id}
+            logoImage={qrIcon}
+            logoWidth={300}
+            logoOpacity={0.2}
+            qrStyle='dots'
+            bgColor='#FFC40C'
+            fgColor='#EE157F'
+            quietZone={20}
+            size={300}
+            eyeColor={['#EE157F', '#96519B', '#2EB4AC']}
+            eyeRadius={[
+              {
+                outer: [16, 16, 0, 16],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 16, 16, 0],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 0, 16, 16],
+                inner: [1, 1, 1, 1]
+              }
+            ]}
+          />
+        )}
       </div>
       <div className='modal-footer'>
         <button

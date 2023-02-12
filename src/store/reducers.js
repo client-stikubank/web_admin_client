@@ -25,6 +25,7 @@ import CarnivalGift from './carnival-gift/reducer'
 import AssessmentQuestion from './assessment-question/reducer'
 import Personality from './personality/reducer'
 import Assessment from './assessment/reducer'
+import Event from './event/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -48,7 +49,8 @@ const rootReducer = combineReducers({
   CarnivalGift,
   AssessmentQuestion,
   Personality,
-  Assessment
+  Assessment,
+  Event
 })
 
 export default rootReducer

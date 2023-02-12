@@ -27,6 +27,7 @@ import User from '../pages/User'
 import Role from '../pages/Role'
 import Reward from '../pages/Reward'
 import Gift from '../pages/Gift'
+import Event from '../pages/Event'
 import AssessmentQuestion from '../pages/AssessmentQuestion'
 import Personality from '../pages/Personality'
 import Assessment from '../pages/Assessment'
@@ -51,7 +52,8 @@ const authProtectedRoutes = [
   { path: '/gift', component: Gift },
   { path: '/personality', component: Personality },
   { path: '/assessment-question', component: AssessmentQuestion },
-  { path: '/assessment', component: Assessment }
+  { path: '/assessment', component: Assessment },
+  { path: '/event', component: Event }
 ]
 
 const publicRoutes = [

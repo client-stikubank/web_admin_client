@@ -23,6 +23,11 @@ export const CARNIVAL_GIFT_STATUSES = [
   { value: 'inactive', label: 'Tidak Aktif' }
 ]
 
+export const EVENT_STATUSES = [
+  { value: 'active', label: 'Aktif' },
+  { value: 'inactive', label: 'Tidak Aktif' }
+]
+
 export const COIN_NAMES = [
   { value: 0, label: 'Mamo' },
   { value: 1, label: 'Beryl' },

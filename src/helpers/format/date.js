@@ -1,11 +1,13 @@
 import moment from 'moment'
 import _ from 'lodash'
 
-export const toDate = value =>
-  value ? moment(value, 'YYYY-MM-DD').toDate() : null
+export const toDate = value => (value ? moment(value).toDate() : null)
 
 export const toFormattedDate = value =>
   value ? moment(value, 'YYYY-MM-DD').format('DD/MM/YYYY') : '-'
+
+export const toFormattedDatetime = value =>
+  value ? moment(value, 'YYYY-MM-DD HH:mm').format('DD/MM/YYYY HH:mm') : '-'
 
 export const toDatepicker = value => moment(value).format('DD/MM/YYYY')
 

@@ -158,6 +158,13 @@ const SidebarContent = props => {
             </li>
 
             <li>
+              <Link to='/event'>
+                <i className='bx bx-music'></i>
+                <span>{props.t('Event')}</span>
+              </Link>
+            </li>
+
+            <li>
               <Link to='/personality'>
                 <i className='bx bxs-color'></i>
                 <span>{props.t('Personality')}</span>
