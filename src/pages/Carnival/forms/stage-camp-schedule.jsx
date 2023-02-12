@@ -4,6 +4,10 @@ import { useForm, Controller } from 'react-hook-form'
 import { Form, Label } from 'reactstrap'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
+import { QRCode } from 'react-qrcode-logo'
+
+// Assets
+import qrIcon from '@/assets/brand/icon.png'
 
 // Components
 import {
@@ -193,6 +197,35 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
             {errors.link?.type === 'required' && 'Tidak boleh kosong!'}
           </span>
         </div>
+
+        {currentData?.id && (
+          <QRCode
+            value={currentData?.id}
+            logoImage={qrIcon}
+            logoWidth={300}
+            logoOpacity={0.2}
+            qrStyle='dots'
+            bgColor='#FFC40C'
+            fgColor='#EE157F'
+            quietZone={20}
+            size={300}
+            eyeColor={['#EE157F', '#96519B', '#2EB4AC']}
+            eyeRadius={[
+              {
+                outer: [16, 16, 0, 16],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 16, 16, 0],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 0, 16, 16],
+                inner: [1, 1, 1, 1]
+              }
+            ]}
+          />
+        )}
       </div>
       <div className='modal-footer d-flex justify-content-between'>
         <button
