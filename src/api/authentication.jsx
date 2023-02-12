@@ -23,11 +23,11 @@ export const postLogout = () => {
   })
 }
 
-export const checkToken = () => {
-  const authUser = JSON.parse(localStorage.getItem('authUser'))
-  return get(url.CHECK_TOKEN, {
-    headers: {
-      Authorization: `Bearer ${authUser.access_token}`
-    }
-  })
-}
+// export const checkToken = () => {
+//   const authUser = JSON.parse(localStorage.getItem('authUser'))
+//   return get(url.CHECK_TOKEN, {
+//     headers: {
+//       Authorization: `Bearer ${authUser.access_token}`
+//     }
+//   })
+// }
