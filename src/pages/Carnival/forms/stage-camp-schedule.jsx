@@ -14,6 +14,7 @@ import {
   LoadingButton,
   InputField,
   DatepickerField,
+  SelectField,
   Confirmation
 } from '@/components/Form'
 
@@ -31,6 +32,8 @@ import {
   toFormattedDate,
   formatTime
 } from '@/helpers/format/date'
+
+import { LEARNING_TYPES } from '@/constants/select-options'
 
 const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
   const dispatch = useDispatch()
@@ -54,7 +57,10 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
         ? [formatTime(currentData?.attributes.time_end)]
         : '00:00',
       quota: currentData?.attributes.quota,
-      link: currentData?.attributes.link
+      link: currentData?.attributes.link,
+      learning_type: _.find(LEARNING_TYPES, {
+        value: parseInt(currentData?.attributes?.learning_type || 0)
+      }),
     }
   })
 
@@ -124,6 +130,26 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
         </div>
 
         <div className='mb-2'>
+          <Label>Tipe Pembelajaran</Label>
+          <Controller
+            name='learning_type'
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <SelectField
+                className={`${errors.learning_type && 'is-invalid'}`}
+                options={LEARNING_TYPES}
+                placeholder='Pilih Tipe'
+                {...field}
+              />
+            )}
+          />
+          <span className='text-danger invalid-feedback'>
+            Tidak boleh kosong!
+          </span>
+        </div>
+
+        <div className='mb-2'>
           <Label>Jam Mulai</Label>
           <Controller
             name='time_start'
@@ -187,16 +213,19 @@ const FormCampStageSchedule = ({ stageCamp, date, currentData }) => {
           </span>
         </div>
 
-        <div className='mb-2'>
-          <Label>Link Pelatihan (Zoom, Google Meet, Ms. Teams)</Label>
-          <InputField
-            className={`form-control ${errors.link && 'is-invalid'}`}
-            {...register('link', { required: true })}
-          />
-          <span className='text-danger invalid-feedback'>
-            {errors.link?.type === 'required' && 'Tidak boleh kosong!'}
-          </span>
-        </div>
+        {watch('learning_type')?.value === 1 && (
+          <div className='mb-2'>
+            <Label>Link Pelatihan (Zoom, Google Meet, Ms. Teams)</Label>
+            <InputField
+              className={`form-control ${errors.link && 'is-invalid'}`}
+              {...register('link', { required: true })}
+            />
+            <span className='text-danger invalid-feedback'>
+              {errors.link?.type === 'required' && 'Tidak boleh kosong!'}
+            </span>
+          </div>
+        )}
+
 
         {currentData?.id && (
           <QRCode

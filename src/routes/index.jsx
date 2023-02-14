@@ -31,6 +31,7 @@ import Event from '../pages/Event'
 import AssessmentQuestion from '../pages/AssessmentQuestion'
 import Personality from '../pages/Personality'
 import Assessment from '../pages/Assessment'
+import GlobalSetting from '../pages/GlobalSetting'
 
 const authProtectedRoutes = [
   { path: '/dashboard', component: Dashboard },
@@ -53,7 +54,8 @@ const authProtectedRoutes = [
   { path: '/personality', component: Personality },
   { path: '/assessment-question', component: AssessmentQuestion },
   { path: '/assessment', component: Assessment },
-  { path: '/event', component: Event }
+  { path: '/event', component: Event },
+  { path: '/global-setting', component: GlobalSetting }
 ]
 
 const publicRoutes = [

@@ -20,6 +20,7 @@ export const URL_PERSONALITIES = '/admin/personalities'
 export const URL_ASSESSMENTS = '/admin/assessments'
 export const URL_EVENTS = '/admin/events'
 export const URL_CITIES = '/admin/cities'
+export const URL_GLOBAL_SETTINGS = '/admin/global_settings'
 
 
 // ======================

@@ -28,8 +28,7 @@ export const columns = [
           <img
             src={
               attributes.user_profile.data.attributes?.image.url
-                ? BACKEND_API_URL +
-                  attributes.user_profile.data.attributes?.image.url
+                ? attributes.user_profile.data.attributes?.image.url
                 : imagePlaceholder
             }
             alt=''

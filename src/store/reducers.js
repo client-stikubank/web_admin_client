@@ -26,6 +26,7 @@ import AssessmentQuestion from './assessment-question/reducer'
 import Personality from './personality/reducer'
 import Assessment from './assessment/reducer'
 import Event from './event/reducer'
+import GlobalSetting from './global-setting/reducer'
 
 const rootReducer = combineReducers({
   // public
@@ -50,7 +51,8 @@ const rootReducer = combineReducers({
   AssessmentQuestion,
   Personality,
   Assessment,
-  Event
+  Event,
+  GlobalSetting
 })
 
 export default rootReducer

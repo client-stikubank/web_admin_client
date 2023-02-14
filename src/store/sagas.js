@@ -22,6 +22,7 @@ import AssessmentQuestionSaga from './assessment-question/saga'
 import PersonalitySaga from './personality/saga'
 import AssessmentSaga from './assessment/saga'
 import EventSaga from './event/saga'
+import GlobalSettingSaga from './global-setting/saga'
 
 export default function* rootSaga() {
   yield all([
@@ -45,6 +46,7 @@ export default function* rootSaga() {
     fork(AssessmentQuestionSaga),
     fork(PersonalitySaga),
     fork(AssessmentSaga),
-    fork(EventSaga)
+    fork(EventSaga),
+    fork(GlobalSettingSaga)
   ])
 }

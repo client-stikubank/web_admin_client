@@ -35,6 +35,11 @@ export const COIN_NAMES = [
   { value: 3, label: 'Jenny' }
 ]
 
+export const LEARNING_TYPES = [
+  { value: 0, label: 'OFFLINE' },
+  { value: 1, label: 'ONLINE' }
+]
+
 export const CHOICE_TYPES = [
   { value: 'introvert', label: 'Introvert (I)', invert_of: 'extrovert' },
   { value: 'extrovert', label: 'Extrovert (E)', invert_of: 'introvert' },

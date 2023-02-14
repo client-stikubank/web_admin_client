@@ -179,9 +179,9 @@ const SidebarContent = props => {
             </li>
 
             <li>
-              <Link to='/role'>
-                <i className='bx bx-accessibility'></i>
-                <span>{props.t('Role')}</span>
+              <Link to='/global-setting'>
+                <i className='bx bx-wrench'></i>
+                <span>{props.t('GlobalSetting')}</span>
               </Link>
             </li>
 
