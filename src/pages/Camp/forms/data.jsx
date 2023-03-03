@@ -40,6 +40,7 @@ const FormData = ({ currentData }) => {
     defaultValues: {
       title: currentData?.attributes.title,
       description: currentData?.attributes.description,
+      subtitle: currentData?.attributes.subtitle,
       level: _.find(LEVELS, {
         value: parseInt(currentData?.attributes.level || 1)
       }),
@@ -107,6 +108,15 @@ const FormData = ({ currentData }) => {
             type='textarea'
             className='form-control'
             {...register('description')}
+          />
+        </div>
+
+        <div className='mb-2'>
+          <Label>Judul untuk e-certificate</Label>
+          <InputField
+            type='textarea'
+            className='form-control'
+            {...register('subtitle')}
           />
         </div>
 

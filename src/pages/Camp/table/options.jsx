@@ -12,6 +12,12 @@ export const columns = [
     formatter: (cell, row) => row.attributes.title
   },
   {
+    dataField: 'subtitle',
+    text: 'Judul E-certificate',
+    sort: true,
+    formatter: (cell, row) => row.attributes.subtitle
+  },
+  {
     dataField: 'level',
     text: 'Level',
     sort: true,
