@@ -34,6 +34,7 @@ export const columns = [
             {userProfile.first_name} {userProfile.last_name}
           </h6>
           <p>{row.attributes.user.data.attributes.email}</p>
+          <p>{row.id}</p>
           <Badge
             className={` font-size-14 badge-soft-${statusOptions().class}`}
             color={'red'}
