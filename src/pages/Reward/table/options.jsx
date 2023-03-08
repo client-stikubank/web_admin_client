@@ -22,6 +22,12 @@ export const columns = [
     }
   },
   {
+    dataField: 'reward_type',
+    text: 'Tipe',
+    sort: true,
+    formatter: (cell, row) => row.attributes.reward_type
+  },
+  {
     dataField: 'amount',
     text: 'Reward',
     sort: true,
