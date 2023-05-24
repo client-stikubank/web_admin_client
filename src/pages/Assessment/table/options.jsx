@@ -29,8 +29,8 @@ export const columns = [
       const results = JSON.parse(row.attributes.results)
 
       return row.attributes.status === 'pending' ? null : (
-        <div class='d-flex'>
-          <div class='text-center'>
+        <div className='d-flex'>
+          <div className='text-center'>
             <h5>{row.attributes.personality.data.attributes.name}</h5>
             <img
               src={row.attributes.personality.data.attributes.image.url}

@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm, Controller } from 'react-hook-form'
 import { Form, Label } from 'reactstrap'
 import _ from 'lodash'
+import { QRCode } from 'react-qrcode-logo'
 import PropTypes from 'prop-types'
+
+import qrIcon from '@/assets/brand/icon.png'
 
 // Components
 import {
@@ -110,8 +113,6 @@ const FormData = ({ currentData }) => {
     dispatch(submitDispatch)
     setConfirmation()
   }
-
-  console.log(watch('event_at'))
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
@@ -279,8 +280,7 @@ const FormData = ({ currentData }) => {
               <DatepickerField
                 disabled={!watch('start_date')}
                 options={{
-                  minDate: watch('start_date') && watch('start_date')[0],
-                  maxDate: watch('event_at') && watch('event_at')[0]
+                  minDate: watch('start_date') && watch('start_date')[0]
                 }}
                 className={errors.end_date && 'is-invalid'}
                 {...field}
@@ -329,6 +329,35 @@ const FormData = ({ currentData }) => {
             Tidak boleh kosong!
           </span>
         </div>
+
+        {currentData?.id && (
+          <QRCode
+            value={currentData?.id}
+            logoImage={qrIcon}
+            logoWidth={300}
+            logoOpacity={0.2}
+            qrStyle='dots'
+            bgColor='#FFC40C'
+            fgColor='#EE157F'
+            quietZone={20}
+            size={300}
+            eyeColor={['#EE157F', '#96519B', '#2EB4AC']}
+            eyeRadius={[
+              {
+                outer: [16, 16, 0, 16],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 16, 16, 0],
+                inner: [1, 1, 1, 1]
+              },
+              {
+                outer: [16, 0, 16, 16],
+                inner: [1, 1, 1, 1]
+              }
+            ]}
+          />
+        )}
       </div>
       <div className='modal-footer'>
         <button

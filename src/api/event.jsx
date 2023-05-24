@@ -28,7 +28,11 @@ export const addNewEvent = data => {
         formData.append(`event[${key}][${subKey}]`, subValue)
       )
     } else if (_.isArray(value)) {
-      formData.append(`event[${key}][]`, value)
+      if (key === 'reward_amount') {
+        _.forEach(value, amount => formData.append(`event[${key}][]`, amount))
+      } else {
+        formData.append(`event[${key}][]`, value)
+      }
     } else {
       formData.append(`event[${key}]`, value)
     }

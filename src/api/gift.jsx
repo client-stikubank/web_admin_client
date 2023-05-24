@@ -28,7 +28,11 @@ export const addNewGift = data => {
         formData.append(`gift[${key}][${subKey}]`, subValue)
       )
     } else if (_.isArray(value)) {
-      formData.append(`gift[${key}][]`, value)
+      if (key === 'reward_amount') {
+        _.forEach(value, amount => formData.append(`gift[${key}][]`, amount))
+      } else {
+        formData.append(`gift[${key}][]`, value)
+      }
     } else {
       formData.append(`gift[${key}]`, value)
     }

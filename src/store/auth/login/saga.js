@@ -3,7 +3,7 @@ import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
 // Login Redux States
 import { LOGIN_USER, LOGOUT_USER } from './actionTypes'
 import { apiError, loginSuccess } from './actions'
-import { postLogin, postLogout } from '../../../api/authentication'
+import { postLogin, postLogout } from '@/api/authentication'
 
 function* loginUser({ payload: { user, history } }) {
   try {

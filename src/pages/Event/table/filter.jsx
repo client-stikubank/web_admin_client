@@ -11,7 +11,7 @@ import {
 import PropTypes from 'prop-types'
 
 // Actions
-import { getGifts } from '@/store/actions'
+import { getEvents } from '@/store/actions'
 
 // Components
 import { LoadingButton, InputField } from '@/components/Form'
@@ -21,25 +21,25 @@ const Filter = ({ isOpen, toggle }) => {
   const { register, handleSubmit, reset } = useForm()
 
   const { currentParams, isLoading } = useSelector(state => ({
-    currentParams: state.Gift.currentParams,
-    isLoading: state.Gift.isLoading
+    currentParams: state.Event.currentParams,
+    isLoading: state.Event.isLoading
   }))
 
   const onSubmit = data => {
     let params = {
       query: {
-        name_cont: data.name
+        title_cont: data.title
       },
       page: 1
     }
-    dispatch(getGifts({ ...currentParams, ...params }))
+    dispatch(getEvents({ ...currentParams, ...params }))
     toggle(!isOpen)
   }
 
   const onReset = () => {
-    reset({ name: '' })
+    reset({ title: '' })
     dispatch(
-      getGifts({
+      getEvents({
         page: currentParams.page,
         per_page: currentParams.per_page
       })
@@ -60,7 +60,7 @@ const Filter = ({ isOpen, toggle }) => {
           <div className='modal-body'>
             <div className='mb-2'>
               <Label>Nama</Label>
-              <InputField className='form-control' {...register('name')} />
+              <InputField className='form-control' {...register('title')} />
             </div>
           </div>
           <div className='modal-footer'>

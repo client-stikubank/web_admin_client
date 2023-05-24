@@ -1,30 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Form, Label } from 'reactstrap'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
 
 // Components
-import {
-  LoadingButton,
-  InputField,
-  AsyncSelectField,
-  SelectField,
-  Confirmation
-} from '@/components/Form'
-
-// API
-import { getUsers } from '@/api/user'
+import { LoadingButton, InputField, Confirmation } from '@/components/Form'
 
 // Actions
 import { addNewGift, updateGift, closeModal } from '@/store/actions'
-
-// Constants
-import { LEVELS, CAMP_STATUSES } from '@/constants/select-options'
-
-// Helpers
-import { speakerOptions } from '@/helpers/render/options'
 
 const FormData = ({ currentData }) => {
   const dispatch = useDispatch()
