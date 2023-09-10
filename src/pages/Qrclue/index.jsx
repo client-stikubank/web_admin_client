@@ -127,7 +127,7 @@ const Qrclue = () => {
         <PaginationProvider pagination={paginationFactory(paginationOptions)}>
           {({ paginationProps, paginationTableProps }) => (
             <MasterContainer
-              title="Master Data — Kuesioner"
+              title="Master Data — QR Petunjuk / Clue"
               actions={
                 <Actions
                   selectedRow={selectedRow}
