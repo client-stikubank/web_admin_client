@@ -8,5 +8,7 @@
   "Event": "Acara/Event",
   "Personality": "Kepribadian/Personality",
   "Assessment": "Tes Kepribadian",
-  "GlobalSetting": "Pengaturan"
+  "GlobalSetting": "Pengaturan",
+  "Questionnaire": "Kuesioner",
+  "QrClue": "QR Petunjuk (Clue)"
 }

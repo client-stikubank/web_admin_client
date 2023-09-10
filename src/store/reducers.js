@@ -1,32 +1,34 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
 // Front
-import Layout from './layout/reducer'
-import Modal from './modal/reducer'
+import Layout from "./layout/reducer";
+import Modal from "./modal/reducer";
 
 // Authentication
-import Login from './auth/login/reducer'
-import Account from './auth/register/reducer'
-import ForgetPassword from './auth/forgetpwd/reducer'
-import Profile from './auth/profile/reducer'
+import Login from "./auth/login/reducer";
+import Account from "./auth/register/reducer";
+import ForgetPassword from "./auth/forgetpwd/reducer";
+import Profile from "./auth/profile/reducer";
 
-import Carnival from './carnival/reducer'
-import Stage from './stage/reducer'
-import Camp from './camp/reducer'
-import StageCampSchedule from './stage-camp-schedule/reducer'
-import Coin from './coin/reducer'
-import Stock from './stock/reducer'
-import User from './user/reducer'
-import UserStageSchedule from './user-stage-schedule/reducer'
-import Role from './role/reducer'
-import Reward from './reward/reducer'
-import Gift from './gift/reducer'
-import CarnivalGift from './carnival-gift/reducer'
-import AssessmentQuestion from './assessment-question/reducer'
-import Personality from './personality/reducer'
-import Assessment from './assessment/reducer'
-import Event from './event/reducer'
-import GlobalSetting from './global-setting/reducer'
+import Carnival from "./carnival/reducer";
+import Stage from "./stage/reducer";
+import Camp from "./camp/reducer";
+import StageCampSchedule from "./stage-camp-schedule/reducer";
+import Coin from "./coin/reducer";
+import Stock from "./stock/reducer";
+import User from "./user/reducer";
+import UserStageSchedule from "./user-stage-schedule/reducer";
+import Role from "./role/reducer";
+import Reward from "./reward/reducer";
+import Gift from "./gift/reducer";
+import CarnivalGift from "./carnival-gift/reducer";
+import AssessmentQuestion from "./assessment-question/reducer";
+import Personality from "./personality/reducer";
+import Assessment from "./assessment/reducer";
+import Event from "./event/reducer";
+import GlobalSetting from "./global-setting/reducer";
+import Questionnaire from "./questionnaire/reducer";
+import Qrclue from "./qrclue/reducer";
 
 const rootReducer = combineReducers({
   // public
@@ -52,7 +54,9 @@ const rootReducer = combineReducers({
   Personality,
   Assessment,
   Event,
-  GlobalSetting
-})
+  GlobalSetting,
+  Questionnaire,
+  Qrclue,
+});
 
-export default rootReducer
+export default rootReducer;

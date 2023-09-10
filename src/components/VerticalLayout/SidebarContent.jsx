@@ -1,188 +1,203 @@
-import PropTypes from 'prop-types'
-import React, { useEffect, useRef } from 'react'
+import PropTypes from "prop-types";
+import React, { useEffect, useRef } from "react";
 
 // //Import Scrollbar
-import SimpleBar from 'simplebar-react'
+import SimpleBar from "simplebar-react";
 
 // MetisMenu
-import MetisMenu from 'metismenujs'
-import { withRouter } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import MetisMenu from "metismenujs";
+import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //i18n
-import { withTranslation } from 'react-i18next'
+import { withTranslation } from "react-i18next";
 
-const SidebarContent = props => {
-  const ref = useRef()
+const SidebarContent = (props) => {
+  const ref = useRef();
   // Use ComponentDidMount and ComponentDidUpdate method symultaniously
   useEffect(() => {
-    const pathName = props.location.pathname
+    const pathName = props.location.pathname;
 
     const initMenu = () => {
-      new MetisMenu('#side-menu')
-      let matchingMenuItem = null
-      const ul = document.getElementById('side-menu')
-      const items = ul.getElementsByTagName('a')
+      new MetisMenu("#side-menu");
+      let matchingMenuItem = null;
+      const ul = document.getElementById("side-menu");
+      const items = ul.getElementsByTagName("a");
       for (let i = 0; i < items.length; ++i) {
         if (pathName === items[i].pathname) {
-          matchingMenuItem = items[i]
-          break
+          matchingMenuItem = items[i];
+          break;
         }
       }
       if (matchingMenuItem) {
-        activateParentDropdown(matchingMenuItem)
+        activateParentDropdown(matchingMenuItem);
       }
-    }
-    initMenu()
-  }, [props.location.pathname])
+    };
+    initMenu();
+  }, [props.location.pathname]);
 
   useEffect(() => {
-    ref.current.recalculate()
-  })
+    ref.current.recalculate();
+  });
 
   function scrollElement(item) {
     if (item) {
-      const currentPosition = item.offsetTop
+      const currentPosition = item.offsetTop;
       if (currentPosition > window.innerHeight) {
-        ref.current.getScrollElement().scrollTop = currentPosition - 300
+        ref.current.getScrollElement().scrollTop = currentPosition - 300;
       }
     }
   }
 
   function activateParentDropdown(item) {
-    item.classList.add('active')
-    const parent = item.parentElement
-    const parent2El = parent.childNodes[1]
-    if (parent2El && parent2El.id !== 'side-menu') {
-      parent2El.classList.add('mm-show')
+    item.classList.add("active");
+    const parent = item.parentElement;
+    const parent2El = parent.childNodes[1];
+    if (parent2El && parent2El.id !== "side-menu") {
+      parent2El.classList.add("mm-show");
     }
 
     if (parent) {
-      parent.classList.add('mm-active')
-      const parent2 = parent.parentElement
+      parent.classList.add("mm-active");
+      const parent2 = parent.parentElement;
 
       if (parent2) {
-        parent2.classList.add('mm-show') // ul tag
+        parent2.classList.add("mm-show"); // ul tag
 
-        const parent3 = parent2.parentElement // li tag
+        const parent3 = parent2.parentElement; // li tag
 
         if (parent3) {
-          parent3.classList.add('mm-active') // li
-          parent3.childNodes[0].classList.add('mm-active') //a
-          const parent4 = parent3.parentElement // ul
+          parent3.classList.add("mm-active"); // li
+          parent3.childNodes[0].classList.add("mm-active"); //a
+          const parent4 = parent3.parentElement; // ul
           if (parent4) {
-            parent4.classList.add('mm-show') // ul
-            const parent5 = parent4.parentElement
+            parent4.classList.add("mm-show"); // ul
+            const parent5 = parent4.parentElement;
             if (parent5) {
-              parent5.classList.add('mm-show') // li
-              parent5.childNodes[0].classList.add('mm-active') // a tag
+              parent5.classList.add("mm-show"); // li
+              parent5.childNodes[0].classList.add("mm-active"); // a tag
             }
           }
         }
       }
-      scrollElement(item)
-      return false
+      scrollElement(item);
+      return false;
     }
-    scrollElement(item)
-    return false
+    scrollElement(item);
+    return false;
   }
 
   return (
     <React.Fragment>
-      <SimpleBar className='h-100' ref={ref}>
-        <div id='sidebar-menu'>
-          <ul className='metismenu list-unstyled' id='side-menu'>
+      <SimpleBar className="h-100" ref={ref}>
+        <div id="sidebar-menu">
+          <ul className="metismenu list-unstyled" id="side-menu">
             <li>
-              <Link to='/#'>
-                <i className='bx bx-home-circle'></i>
-                <span>{props.t('Dashboards')}</span>
+              <Link to="/#">
+                <i className="bx bx-home-circle"></i>
+                <span>{props.t("Dashboards")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/youthcamp'>
-                <i className='bx bx-right-arrow'></i>
-                <span>{props.t('Carnival')}</span>
+              <Link to="/youthcamp">
+                <i className="bx bx-right-arrow"></i>
+                <span>{props.t("Carnival")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/stock'>
-                <i className='bx bx-wallet-alt'></i>
-                <span>{props.t('Stock')}</span>
+              <Link to="/stock">
+                <i className="bx bx-wallet-alt"></i>
+                <span>{props.t("Stock")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/reward'>
-                <i className='bx bxs-medal'></i>
-                <span>{props.t('Reward')}</span>
+              <Link to="/reward">
+                <i className="bx bxs-medal"></i>
+                <span>{props.t("Reward")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/assessment'>
-                <i className='bx bxs-pie-chart'></i>
-                <span>{props.t('Assessment')}</span>
+              <Link to="/assessment">
+                <i className="bx bxs-pie-chart"></i>
+                <span>{props.t("Assessment")}</span>
               </Link>
             </li>
 
-            <li className='menu-title'>{props.t('Master Data')}</li>
+            <li className="menu-title">{props.t("Master Data")}</li>
 
             <li>
-              <Link to='/coin'>
-                <i className='bx bx-coin'></i>
-                <span>{props.t('Coin')}</span>
-              </Link>
-            </li>
-
-            <li>
-              <Link to='/camp'>
-                <i className='bx bx-book'></i>
-                <span>{props.t('Camp')}</span>
+              <Link to="/coin">
+                <i className="bx bx-coin"></i>
+                <span>{props.t("Coin")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/assessment-question'>
-                <i className='bx bx-message-rounded-dots'></i>
-                <span>{props.t('AssessmentQuestion')}</span>
+              <Link to="/camp">
+                <i className="bx bx-book"></i>
+                <span>{props.t("Camp")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/gift'>
-                <i className='bx bx-gift'></i>
-                <span>{props.t('Gift')}</span>
+              <Link to="/assessment-question">
+                <i className="bx bx-message-rounded-dots"></i>
+                <span>{props.t("AssessmentQuestion")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/event'>
-                <i className='bx bx-music'></i>
-                <span>{props.t('Event')}</span>
+              <Link to="/gift">
+                <i className="bx bx-gift"></i>
+                <span>{props.t("Gift")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/personality'>
-                <i className='bx bxs-color'></i>
-                <span>{props.t('Personality')}</span>
+              <Link to="/event">
+                <i className="bx bx-music"></i>
+                <span>{props.t("Event")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/user'>
-                <i className='bx bx-group'></i>
-                <span>{props.t('User')}</span>
+              <Link to="/personality">
+                <i className="bx bxs-color"></i>
+                <span>{props.t("Personality")}</span>
               </Link>
             </li>
 
             <li>
-              <Link to='/global-setting'>
-                <i className='bx bx-wrench'></i>
-                <span>{props.t('GlobalSetting')}</span>
+              <Link to="/user">
+                <i className="bx bx-group"></i>
+                <span>{props.t("User")}</span>
               </Link>
+            </li>
+
+            <li>
+              <Link to="/global-setting">
+                <i className="bx bx-wrench"></i>
+                <span>{props.t("GlobalSetting")}</span>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/#" className="has-arrow ">
+                <i className="bx bxs-joystick"></i>
+                <span>{props.t("Games")}</span>
+              </Link>
+              <ul className="sub-menu">
+                <li>
+                  <Link to="/questionnaire">{props.t("Questionnaire")}</Link>
+                </li>
+                <li>
+                  <Link to="/qrclue">{props.t("QrClue")}</Link>
+                </li>
+              </ul>
             </li>
 
             {/* <li>
@@ -398,12 +413,12 @@ const SidebarContent = props => {
         </div>
       </SimpleBar>
     </React.Fragment>
-  )
-}
+  );
+};
 
 SidebarContent.propTypes = {
   location: PropTypes.object,
-  t: PropTypes.any
-}
+  t: PropTypes.any,
+};
 
-export default withRouter(withTranslation()(SidebarContent))
+export default withRouter(withTranslation()(SidebarContent));
