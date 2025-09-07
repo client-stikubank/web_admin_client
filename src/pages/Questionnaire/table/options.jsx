@@ -10,6 +10,7 @@ export const columns = [
     sort: true,
     formatter: (cell, row) => row.attributes.question,
   },
+
   {
     dataField: "answers",
     text: "Jawaban",
@@ -21,6 +22,12 @@ export const columns = [
           <br />
         </span>
       )),
+  },
+  {
+    dataField: "correct_answer",
+    text: "Jawaban Benar",
+    sort: true,
+    formatter: (cell, row) => row.attributes.correct_answer,
   },
   {
     dataField: "start_date",
@@ -41,12 +48,12 @@ export const columns = [
     formatter: (cell, row) => (
       <Badge
         className={` font-size-12 badge-soft-${
-          row.attributes["status"] ? "success" : "danger"
+          row.attributes["status"] !== "inactive" ? "success" : "danger"
         }`}
         color={"red"}
         pill
       >
-        {row.attributes["status"] ? "Aktif" : "Tidak Aktif"}
+        {row.attributes["status"] !== "inactive" ? "Aktif" : "Tidak Aktif"}
       </Badge>
     ),
   },

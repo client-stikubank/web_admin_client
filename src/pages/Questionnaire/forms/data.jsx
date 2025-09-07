@@ -56,6 +56,7 @@ const FormData = ({ currentData }) => {
     defaultValues: {
       question: currentData?.attributes.question,
       answers: currentData?.attributes?.answers?.join("\n"),
+      correct_answer: currentData?.attributes?.correct_answer,
       reward_amount: currentData?.attributes.reward_amount?.join(""),
       start_date: currentData?.attributes?.start_date
         ? toDate(currentData?.attributes?.start_date)
@@ -75,6 +76,7 @@ const FormData = ({ currentData }) => {
 
   const onSubmit = (data) => {
     data.answers = data.answers.replace(/\r\n/g, "\n").split("\n");
+    data.correct_answer = data.correct_answer;
     data.status = data.status.value;
     data.start_date = data.start_date = toFormattedDate(
       _.isArray(data.start_date) ? data.start_date[0] : data.start_date
@@ -131,6 +133,21 @@ const FormData = ({ currentData }) => {
           />
           <span className="text-danger invalid-feedback">
             {errors.answers?.type === "required" && "Tidak boleh kosong!"}
+          </span>
+        </div>
+
+        <div className="mb-2">
+          <Label>Jawaban Benar (Isi jika ada)</Label>
+          <InputField
+            type="input"
+            className={`form-control ${
+              errors.correct_answer && "is-invalid"
+            } h-`}
+            {...register("correct_answer")}
+          />
+          <span className="text-danger invalid-feedback">
+            {errors.correct_answer?.type === "required" &&
+              "Tidak boleh kosong!"}
           </span>
         </div>
 
